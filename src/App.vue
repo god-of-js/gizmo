@@ -1,32 +1,30 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <loader v-if="loader" />
+    <router-view></router-view>
+  </v-app>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import { EventBus } from "./utils/eventbus.ts";
+@Component
+export default class Register extends Vue {
+  private loader = false;
+  mounted() {
+    EventBus.$on("load", (value: boolean) => {
+      this.loader = value;
+    });
   }
 }
+</script>
+<style lang="scss">
+@font-face {
+  src: url("/fonts/Poppins-Regular.ttf");
+  font-family: "Poppins";
+}
+* {
+  font-family: "Poppins";
+}
+@import url("./style/style.css");
+@import url("./style/mobile.css");
 </style>

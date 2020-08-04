@@ -1,0 +1,16 @@
+@media screen and (max-width: 950px) {
+    .auth__form__cont{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 741px) {
+    .auth__tab__cont{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 655px) {
+    .auth__img{
+        display: none !important;
+    }
+    
+}

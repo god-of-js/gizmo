@@ -1,10 +1,20 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
+import auth from "../layouts/auth.vue";
 
 Vue.use(VueRouter);
 
-const routes: Array<RouteConfig> = [
+const routes: RouteConfig[] = [
+  {
+    path: "*",
+    redirect: "/"
+  },
+  {
+    path: "/auth",
+    name: "auth",
+    component: auth
+  },
   {
     path: "/",
     name: "Home",

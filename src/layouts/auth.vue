@@ -1,0 +1,59 @@
+<template>
+  <div class="d-flex auth__body">
+    <section
+      class="auth__img d-flex flex-column justify-end font__white pa-6 pr-14 pb-16"
+    >
+      <div class="font__bold font__xx__bg">Gizmo</div>
+      <div class="font__x__sm gizmo__text">
+        Search for beautiful houses for sale or rent and also put up your houses
+        for sale or rent all around Nigeria.
+      </div>
+    </section>
+    <section class="auth__form d-flex align-center justify-center flex-column">
+      <div class="font__purple font__bold font__xx__md pb-6">Welcome</div>
+      <div class="d-flex font__x__sm font__bold auth__tab__cont pb-6">
+        <button
+          :class="
+            componentId === 'login' ? 'tab__btn active__tab__btn' : 'tab__btn'
+          "
+          @click="componentId = 'login'"
+        >
+          Sign In
+        </button>
+        <button
+          :class="
+            componentId === 'register'
+              ? 'tab__btn active__tab__btn'
+              : 'tab__btn'
+          "
+          @click="componentId = 'register'"
+        >
+          Create Account
+        </button>
+      </div>
+      <div class="auth__form__cont">
+        <component :is="componentId"></component>
+      </div>
+    </section>
+  </div>
+</template>
+<script lang="ts">
+import login from "@/views/auth/login.vue";
+import register from "@/views/auth/register.vue";
+export default {
+  data: () => {
+    return {
+      componentId: "login"
+    };
+  },
+  components: {
+    login,
+    register
+  }
+};
+</script>
+<style lang="scss">
+.gizmo__text {
+  width: 80%;
+}
+</style>
