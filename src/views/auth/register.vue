@@ -53,7 +53,7 @@ export default class Register extends Vue {
     name: ""
   };
   public createAccount(): void {
-   EventBus.$emit('load', true);
+    EventBus.$emit("load", true);
   }
 }
 </script>
