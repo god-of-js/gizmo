@@ -18,13 +18,13 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { EventBus } from "@/utils/eventbus.ts";
-@Component
-export default class Register extends Vue {
+@Component({
+  name: 'Login'
+})
+export default class Login extends Vue {
   private body: object = {
     email: "",
     password: "",
-    number: "",
-    name: ""
   };
   public createAccount(): void {
     EventBus.$emit("load", true);

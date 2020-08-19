@@ -1,7 +1,7 @@
 import PulseLoader from "vue-spinner/src/GridLoader.vue";
 import Vue from "vue";
 import loader from "@/components/components/loader.vue";
-import { EventBus } from "./eventbus.ts";
+import { EventBus } from "./eventbus";
 // import VueIziToast from "vue-izitoast";
 // import "izitoast/dist/css/iziToast.css";
 // Vue.use(VueIziToast);

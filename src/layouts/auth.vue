@@ -40,16 +40,19 @@
 <script lang="ts">
 import login from "@/views/auth/login.vue";
 import register from "@/views/auth/register.vue";
-export default {
-  data: () => {
-    return {
-      componentId: "login"
-    };
-  },
+import loader from './components/HelloWorld/loader.vue';
+import { Component, Vue } from "vue-property-decorator";
+import { EventBus } from "@/utils/eventbus.ts";
+@Component({
+  name: 'Auth',
   components: {
     login,
-    register
+    register,
+    loader
   }
+})
+export default class Auth extends Vue {
+  
 };
 </script>
 <style lang="scss">

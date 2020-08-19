@@ -3,15 +3,14 @@
     <router-view />
   </v-app>
 </template>
-
 <script lang="ts">
 import Vue from "vue";
-
-export default Vue.extend({
-  name: "App",
-
-  data: () => ({
-    //
-  })
-});
+// i
+export default class App extends Vue {
+  
+};
 </script>
+<style scoped>
+@import url("./style/style.sass");
+@import url("./style/mobile.sass");
+</style>
