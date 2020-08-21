@@ -10,11 +10,10 @@ $green: green;
 }
 .auth__form{
     background-image: url('/img/patterns.svg');
-    background-color: $green;
     height: 100vh;
-    width: 60%;
-  background-repeat: no-repeat;
-  background-size: 70% 45%;
+    width: 60%;     
+    background-repeat: no-repeat;
+    background-size: 70% 45%;
     background-position: right bottom;
 }
 .font__bold{

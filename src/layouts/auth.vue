@@ -38,13 +38,12 @@
   </div>
 </template>
 <script lang="ts">
-import login from "@/views/auth/login.vue";
+import login from "../views/auth/login.vue";
 import register from "@/views/auth/register.vue";
-import loader from './components/HelloWorld/loader.vue';
+import loader from "@/components/loader.vue";
 import { Component, Vue } from "vue-property-decorator";
-import { EventBus } from "@/utils/eventbus.ts";
 @Component({
-  name: 'Auth',
+  name: "Auth",
   components: {
     login,
     register,
@@ -52,8 +51,8 @@ import { EventBus } from "@/utils/eventbus.ts";
   }
 })
 export default class Auth extends Vue {
-  
-};
+  private componentId = "login";
+}
 </script>
 <style lang="scss">
 .gizmo__text {

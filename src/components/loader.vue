@@ -3,6 +3,13 @@
     <pulse-loader :loading="true" color="#1C528A"></pulse-loader>
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+@Component({
+  name: "loader"
+})
+export default class Login extends Vue {}
+</script>
 <style>
 .loader {
   position: fixed;

@@ -5,12 +5,9 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-// i
-export default class App extends Vue {
-  
-};
+export default Vue.extend({});
 </script>
 <style scoped>
-@import url("./style/style.sass");
-@import url("./style/mobile.sass");
+@import url("./style/style.scss");
+@import url("./style/mobile.scss");
 </style>
