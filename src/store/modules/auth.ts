@@ -8,6 +8,7 @@ import {
 } from "vuex-module-decorators";
 import store from '../index'
 import Api from '@/api'
+import {setToken} from '@/services/cookies'
 @Module({
   namespaced: true,
   name: "auth",
@@ -18,7 +19,9 @@ class Auth extends VuexModule {
 
   @Action({ rawError: true })
   public async register(data: object) {
-    Api.post('', data)
+    Api.post('/api/v1/user/register', data).then(response => {
+      console.log(response)
+    })
   }
 
 }
