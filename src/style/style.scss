@@ -1,89 +1,123 @@
 $green: green;
-.auth__body{
+
+.auth__body {
     height: 100vh;
 }
-.auth__img{
+
+.auth__img {
     height: 100vh;
     width: 40%;
     background-size: cover;
     background-image: linear-gradient(to top, #1C528A, rgba(40, 31, 71, 0)), url('/img/authbackground.jpg')
 }
-.auth__form{
+
+.auth__form {
     background-image: url('/img/patterns.svg');
     height: 100vh;
-    width: 60%;     
+    width: 60%;
     background-repeat: no-repeat;
     background-size: 70% 45%;
     background-position: right bottom;
 }
-.font__bold{
+
+.font__bold {
     font-weight: bold;
 }
-.font__white{
+
+.font__white {
     color: #ffffff;
 }
-.font__purple{
+
+.font__purple {
     color: #1C528A;
 }
-.font__ash{
+
+.font__ash {
     color: #C4C4C4;
 }
-.font__xx__sm{
+
+.font__xx__sm {
     font-size: 0.6em;
 }
-.font__x__sm{
+
+.font__x__sm {
     font-size: 0.7em;
 }
-.font__sm{
+
+.font__sm {
     font-size: 0.9em;
 }
-.font__xx__md{
+
+.font__xx__md {
     font-size: 1em;
 }
-.font__x__md{
+
+.font__x__md {
     font-size: 1.2em;
 }
-.font__md{
+
+.font__md {
     font-size: 1.4em;
 }
-.font__xx__bg{
+
+.font__xx__bg {
     font-size: 1.6em;
 }
-.tab__btn{
+
+.tab__btn {
     color: #C4C4C4;
     outline: none;
     width: 50%;
     border-bottom: 3px solid transparent;
     padding-bottom: 4px;
 }
-.auth__tab__cont{
+
+.auth__tab__cont {
     width: 40%;
 }
+
 #input {
     height: 36px !important;
 }
-.auth__form__cont{
+
+.auth__form__cont {
     width: 50%;
 }
-.yellow__btn{
+
+.yellow__btn {
     background-color: #FFBC44;
     color: #000;
     outline: none;
 }
-.border__radius{
+
+.border__radius {
     border-radius: 20px;
 }
-.yellow__btn:hover{
+
+.yellow__btn:hover {
     background-color: #fbb034;
     background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
 }
-.active__tab__btn{
+
+.active__tab__btn {
     border-bottom: 3px solid #1C528A;
     padding-bottom: 4px;
     color: #1C528A;
     transition: transform 0.5s;
 }
-.v-text-field--filled > .v-input__control > .v-input__slot, .v-text-field--full-width > .v-input__control > .v-input__slot, .v-text-field--outlined > .v-input__control > .v-input__slot {
+
+.v-text-field--filled>.v-input__control>.v-input__slot,
+.v-text-field--full-width>.v-input__control>.v-input__slot,
+.v-text-field--outlined>.v-input__control>.v-input__slot {
     /* padding-bottom: 12px!important; */
     min-height: 46px !important;
+}
+.h-100{
+    height: 100vh;
+}
+.grey__bottom__img{
+    background-image: url('/img/patterns.svg');
+    background-repeat: no-repeat;
+    background-size: 50% 45%;
+    background-position: right bottom;
 }

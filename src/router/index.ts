@@ -1,10 +1,13 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
-import auth from "../layouts/auth.vue";
 
 Vue.use(VueRouter);
-
+interface childRoutes{
+  name: string,
+  path: string,
+  component: Function
+}
 const routes: RouteConfig[] = [
   {
     path: "*",
@@ -13,7 +16,14 @@ const routes: RouteConfig[] = [
   {
     path: "/auth",
     name: "auth",
-    component: auth
+    component: () =>
+    import("../layouts/auth.vue")
+  },
+  {
+    path: "/auth/verify-number/:id",
+    name: "verify number",
+    component: () =>
+    import( "../views/auth/verifynumber.vue")
   },
   {
     path: "/",

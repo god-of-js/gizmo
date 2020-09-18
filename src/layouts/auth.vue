@@ -1,5 +1,6 @@
 <template>
   <div class="d-flex auth__body">
+    <loader v-if="loader"/>
     <section
       class="auth__img d-flex flex-column justify-end font__white pa-6 pr-14 pb-16"
     >
@@ -32,7 +33,7 @@
         </button>
       </div>
       <div class="auth__form__cont">
-        <component :is="componentId"></component>
+        <component :is="componentId" @load="setLoad($event)"></component>
       </div>
     </section>
   </div>
@@ -51,7 +52,11 @@ import { Component, Vue } from "vue-property-decorator";
   }
 })
 export default class Auth extends Vue {
-  private componentId = "login";
+  private componentId = "register";
+  private loader = false;
+  public setLoad(value: boolean): void{
+    this.loader = value;
+  }
 }
 </script>
 <style lang="scss">

@@ -5,7 +5,7 @@
       <v-text-field label="Email" id="input" outlined required v-model="body.email" type="email"></v-text-field>
       <v-text-field
         label="Phone Number"
-        v-model="body.number"
+        v-model="body.phone"
         required
         id="input"
         outlined
@@ -22,7 +22,7 @@
         @click:append="show = !show"
       ></v-text-field>
       <div class="d-flex justify-center pt-5">
-        <button class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-2">Create Account</button>
+        <button class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-2" :disabled="disabled">Create Account</button>
       </div>
     </form>
   </div>
@@ -32,19 +32,31 @@ import { Component, Vue } from "vue-property-decorator";
 import { EventBus } from "@/utils/eventbus.ts";
 import { AuthModule } from "@/store/modules/auth";
 
+interface User {
+  name: string;
+  phone: string;
+  password: string;
+  email: string;
+
+}
 @Component({})
 export default class Register extends Vue {
-  private body: object = {
+  private body: User = {
     email: "",
     password: "",
-    number: "",
+    phone: '',
     name: ""
   };
+  private disabled = false;
   private show = false;
-
-  public createAccount(): void {
-    AuthModule.register(this.body);
-    EventBus.$emit("load", true);
+  public loaders(value: any): void {
+    this.$emit("load", value);
+    this.disabled = value;
+  }
+  public async createAccount(): Promise<void> {
+    this.loaders(true)
+    await AuthModule.register(this.body);
+    this.loaders(false)
   }
 }
 </script>
