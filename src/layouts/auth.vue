@@ -1,9 +1,7 @@
 <template>
   <div class="d-flex auth__body">
-    <loader v-if="loader"/>
-    <section
-      class="auth__img d-flex flex-column justify-end font__white pa-6 pr-14 pb-16"
-    >
+    <loader v-if="loader" />
+    <section class="auth__img d-flex flex-column justify-end font__white pa-6 pr-14 pb-16">
       <div class="font__bold font__xx__bg">Gizmo</div>
       <div class="font__x__sm gizmo__text">
         Search for beautiful houses for sale or rent and also put up your houses
@@ -18,9 +16,7 @@
             componentId === 'login' ? 'tab__btn active__tab__btn' : 'tab__btn'
           "
           @click="componentId = 'login'"
-        >
-          Sign In
-        </button>
+        >Sign In</button>
         <button
           :class="
             componentId === 'register'
@@ -28,12 +24,12 @@
               : 'tab__btn'
           "
           @click="componentId = 'register'"
-        >
-          Create Account
-        </button>
+        >Create Account</button>
       </div>
       <div class="auth__form__cont">
-        <component :is="componentId" @load="setLoad($event)"></component>
+        <transition name="slide-fade">
+          <component :is="componentId" @load="setLoad($event)"></component>
+        </transition>
       </div>
     </section>
   </div>
@@ -54,7 +50,7 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Auth extends Vue {
   private componentId = "register";
   private loader = false;
-  public setLoad(value: boolean): void{
+  public setLoad(value: boolean): void {
     this.loader = value;
   }
 }

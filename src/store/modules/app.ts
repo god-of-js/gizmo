@@ -13,6 +13,8 @@ import store from "../index";
   store,
   dynamic: true
 })
-class Auth extends VuexModule {}
+class Auth extends VuexModule {
+  appName: string = 'Gizmo'
+}
 
 export default Auth;

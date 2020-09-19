@@ -9,14 +9,8 @@ import {
 import router from '../../router'
 import store from '../index'
 import Api from '@/api'
+import {User} from '@/utils/models.ts'
 import {setToken} from '@/services/cookies'
-interface User {
-  name: string;
-  phone: string;
-  password: string;
-  email: string;
-
-}
 @Module({
   namespaced: true,
   name: "auth",
@@ -26,7 +20,6 @@ interface User {
 class Auth extends VuexModule {
   @Action
   public async register(data: User) {
-
     Api.post('/api/v1/user/register', data).then(response => {
       console.log(response)
       router.push(`/auth/verify-number/${response.data.verificationDetails.token}`)
@@ -36,6 +29,4 @@ class Auth extends VuexModule {
   }
 
 }
-
-
 export const AuthModule = getModule(Auth);
