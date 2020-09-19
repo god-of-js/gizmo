@@ -1,5 +1,5 @@
 <template>
-  <div class="grey__bottom__img">
+  <div>
     <div>
       <div class="font__xx__bg font__bold pb-6">Phone number verification</div>
       <form>

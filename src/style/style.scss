@@ -12,12 +12,12 @@ $green: green;
 }
 
 .auth__form {
-    background-image: url('/img/patterns.svg');
+    background-image: url('/img/patterns.svg'), url('/img/topppaterns.svg');
     height: 100vh;
     width: 60%;
     background-repeat: no-repeat;
-    background-size: 70% 45%;
-    background-position: right bottom;
+    background-size: 70% 45%, 16% 20%;
+    background-position: right bottom, right top;
 }
 
 .font__bold {
@@ -119,10 +119,10 @@ $green: green;
     height: 90vh;
 }
 .grey__bottom__img{
-    background-image: url('/img/patterns.svg');
+    background-size: 50% 45%, 10% 20%;
+    background-position: right bottom, right top;
     background-repeat: no-repeat;
-    background-size: 50% 45%;
-    background-position: right bottom;
+    background-image: url('/img/patterns.svg'), url('/img/topppaterns.svg');
 }
 .slide-fade-enter-active {
     transition: all .8s ease;
