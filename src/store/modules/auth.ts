@@ -20,7 +20,8 @@ import {setToken} from '@/services/cookies'
 class Auth extends VuexModule {
   @Action
   public async register(data: User) {
-    Api.post('/api/v1/user/register', data).then((response: Data) => {
+    console.log(data)
+    Api().post('/api/v1/user/register', data).then((response: Data) => {
       console.log(response)
       router.push(`/auth/verify-number/${response.data.verificationDetails.token}`)
     }).catch((err: Response) => {
