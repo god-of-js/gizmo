@@ -1,6 +1,6 @@
 import {
   Module,
-  VuexModule,
+  VuexModule
   // getModule,
   // Mutation,
   // Action,
@@ -14,7 +14,7 @@ import store from "../index";
   dynamic: true
 })
 class Auth extends VuexModule {
-  appName: string = 'Gizmo'
+  appName = "Gizmo";
 }
 
 export default Auth;

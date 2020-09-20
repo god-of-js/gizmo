@@ -1,14 +1,12 @@
 import axios from "axios";
-const apiUrl = "http://localhost:3000";
-import { getToken } from '@/services/cookies';
+const baseUrl = "http://localhost:3000";
+import { getToken } from "@/services/cookies";
 const token = getToken();
 export const Api = () =>
   axios.create({
-    baseURL: apiUrl,
+    baseURL: baseUrl,
     timeout: 50000,
     headers: {
       Authorization: `Bearer ${token}`
     }
   });
-  
-

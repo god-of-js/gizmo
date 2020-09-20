@@ -16,29 +16,26 @@ const routes: RouteConfig[] = [
   {
     path: "/auth",
     name: "auth",
-    component: () =>
-    import("../layouts/auth.vue")
+    component: () => import("../layouts/auth.vue")
   },
   {
-    path: '/auth-services',
-    name: 'auth services',
-    component: () => import('../layouts/authservices.vue'),
+    path: "/auth-services",
+    name: "auth services",
+    component: () => import("../layouts/authservices.vue"),
     children: [
       {
         path: "/auth/verify-number/:id",
         name: "verify number",
-        component: () =>
-        import( "../views/auth/verifynumber.vue")
+        component: () => import("../views/auth/verifynumber.vue")
       },
       {
-        path: "/auth/change-number/:id",
+        path: "/auth/change-number",
         name: "change number",
-        component: () =>
-        import( "../views/auth/changenumber.vue")
-      },
+        component: () => import("../views/auth/changenumber.vue")
+      }
     ]
   },
- 
+
   {
     path: "/",
     name: "Home",

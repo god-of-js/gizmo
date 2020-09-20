@@ -1,8 +1,22 @@
 <template>
   <div class="mx-auto">
     <form @submit.prevent="createAccount">
-      <v-text-field label="Full Name" id="input" type="text" required outlined v-model="body.name"></v-text-field>
-      <v-text-field label="Email" id="input" outlined required v-model="body.email" type="email"></v-text-field>
+      <v-text-field
+        label="Full Name"
+        id="input"
+        type="text"
+        required
+        outlined
+        v-model="body.name"
+      ></v-text-field>
+      <v-text-field
+        label="Email"
+        id="input"
+        outlined
+        required
+        v-model="body.email"
+        type="email"
+      ></v-text-field>
       <v-text-field
         label="Phone Number"
         v-model="body.phone"
@@ -22,7 +36,12 @@
         @click:append="show = !show"
       ></v-text-field>
       <div class="d-flex justify-center pt-5">
-        <button class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-2" :disabled="disabled">Create Account</button>
+        <button
+          class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-2"
+          :disabled="disabled"
+        >
+          Create Account
+        </button>
       </div>
     </form>
   </div>
@@ -37,14 +56,13 @@ interface User {
   phone: string;
   password: string;
   email: string;
-
 }
 @Component({})
 export default class Register extends Vue {
   private body: User = {
     email: "",
     password: "",
-    phone: '',
+    phone: "",
     name: ""
   };
   private disabled = false;
@@ -54,9 +72,9 @@ export default class Register extends Vue {
     this.disabled = value;
   }
   public async createAccount(): Promise<void> {
-    this.loaders(true)
+    this.loaders(true);
     await AuthModule.register(this.body);
-    this.loaders(false)
+    this.loaders(false);
   }
 }
 </script>

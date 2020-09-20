@@ -15,14 +15,17 @@
           <button
             class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-2"
             :disabled="disabled"
-          >Verify Number</button>
+          >
+            Verify Number
+          </button>
         </div>
       </form>
       <div class="d-flex pb-6">
         <v-icon style="font-size: 40px;">mdi-phone-message-outline</v-icon>
-        <div
-          class="ml-4 font__xx__md font__bold"
-        >We just sent a text message containing a one-time verification code. The code would expire in 2hrs time.</div>
+        <div class="ml-4 font__xx__md font__bold">
+          We just sent a text message containing a one-time verification code.
+          The code would expire in 2hrs time.
+        </div>
       </div>
     </div>
     <div class="d-flex justify-space-between align-center">
@@ -39,8 +42,6 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  
-})
+import Vue from "vue";
+export default Vue.extend({});
 </script>
