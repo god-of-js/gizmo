@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  coveralls: coveralls/coveralls@1.0.4
+  coveralls: coveralls/coveralls@1.0.6
   node: circleci/node@1.1
   heroku: circleci/heroku@0.0.10
 workflows:
@@ -19,7 +19,6 @@ jobs:
       - image: circleci/node:10.16.0
     steps:
       - checkout
-      # - run: npm install
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
