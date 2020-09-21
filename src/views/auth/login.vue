@@ -17,7 +17,6 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-// import { EventBus } from "@/utils/eventbus.ts";
 @Component({
   name: "Login"
 })
@@ -28,7 +27,6 @@ export default class Login extends Vue {
   };
   public createAccount(): void {
     console.log(this.body);
-    // EventBus.$emit("load", true);
   }
 }
 </script>

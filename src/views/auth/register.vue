@@ -48,7 +48,6 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { EventBus } from "@/utils/eventbus.ts";
 import { AuthModule } from "@/store/modules/auth";
 
 interface User {
