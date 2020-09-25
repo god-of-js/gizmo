@@ -35,9 +35,9 @@
         :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
         @click:append="show = !show"
       ></v-text-field>
-      <div class="d-flex justify-center pt-5">
+      <div class="d-flex justify-center ">
         <button
-          class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-2"
+          class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-4 d-flex align-center justify-center"
           :disabled="disabled"
         >
           Create Account
@@ -49,13 +49,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { AuthModule } from "@/store/modules/auth";
-
-interface User {
-  name: string;
-  phone: string;
-  password: string;
-  email: string;
-}
+import { User } from "@/utils/models";
 @Component({})
 export default class Register extends Vue {
   private body: User = {

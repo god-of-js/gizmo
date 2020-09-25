@@ -1,32 +1,59 @@
 <template>
   <div class="mx-auto">
-    <v-text-field label="Email" id="input" outlined></v-text-field>
-    <v-text-field label="Password" id="input" outlined></v-text-field>
-    <div class="text-right font__x__sm pt-0 mt-n6">
-      <router-link to="/">forgot password?</router-link>
-    </div>
-    <div class="d-flex justify-center pt-5">
-      <button
-        class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-2"
-        @click="createAccount"
-      >
-        Sign In
-      </button>
-    </div>
+    <form @submit.prevent="login">
+      <v-text-field
+        label="Email"
+        id="input"
+        outlined
+        required
+        v-model="body.email"
+        type="email"
+      ></v-text-field>
+      <v-text-field
+        label="Password"
+        id="input"
+        outlined
+        v-model="body.password"
+        required
+        :type="show ? 'text' : 'password'"
+        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append="show = !show"
+      ></v-text-field>
+      <div class="text-right font__x__sm pt-2 mt-n6">
+        <router-link to="/">forgot password?</router-link>
+      </div>
+      <div class="d-flex justify-center pt-3">
+        <button
+          class="border__radius yellow__btn font__x__sm pl-16 pr-16 pa-4 d-flex align-center justify-center"
+          :disabled="disabled"
+        >
+          Sign In
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-@Component({
-  name: "Login"
-})
-export default class Login extends Vue {
-  private body: object = {
+import { AuthModule } from "@/store/modules/auth";
+import { User } from "@/utils/models";
+@Component({})
+export default class Register extends Vue {
+  private body: User = {
     email: "",
     password: ""
   };
-  public createAccount(): void {
-    console.log(this.body);
+  private disabled = false;
+  private show = false;
+  // henryeze019@gmail.com 08033283828;
+  public loaders(value: any): void {
+    this.$emit("load", value);
+    this.disabled = value;
+  }
+  public async login(): Promise<void> {
+    this.loaders(true);
+    await AuthModule.login(this.body);
+    this.loaders(false);
   }
 }
 </script>

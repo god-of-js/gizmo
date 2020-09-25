@@ -2,7 +2,7 @@
   <div class="d-flex auth__body">
     <loader v-if="loader" />
     <section
-      class="auth__img d-flex flex-column justify-end font__white pa-6 pr-14 pb-16"
+      class="auth__img font__white pa-6 pr-14 pb-16"
     >
       <div class="font__bold font__xx__bg">Gizmo</div>
       <div class="font__x__sm gizmo__text">
@@ -10,7 +10,7 @@
         for sale or rent all around Nigeria.
       </div>
     </section>
-    <section class="auth__form d-flex align-center justify-center flex-column">
+    <section class="auth__form d-flex align-center justify-center flex-column ">
       <div class="font__purple font__bold font__xx__md pb-6">Welcome</div>
       <div class="d-flex font__x__sm font__bold auth__tab__cont pb-6">
         <button
@@ -32,7 +32,7 @@
           Create Account
         </button>
       </div>
-      <div class="auth__form__cont">
+      <div class="auth__form__cont ">
         <transition name="slide-fade">
           <component :is="componentId" @load="setLoad($event)"></component>
         </transition>

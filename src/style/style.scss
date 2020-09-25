@@ -7,6 +7,9 @@ $green: green;
 .auth__img {
     height: 100vh;
     width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
     background-size: cover;
     background-image: linear-gradient(to top, #1C528A, rgba(40, 31, 71, 0)), url('/img/authbackground.jpg')
 }
@@ -85,13 +88,15 @@ $green: green;
 }
 
 .yellow__btn {
-    background-color: #FFBC44;
+    background-color: #FFBC44 !important;
     color: #000;
     outline: none;
+    width: 100%;
+    height: 40px;
 }
 
 .border__radius {
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .yellow__btn:hover {
@@ -125,7 +130,7 @@ $green: green;
     background-image: url('/img/patterns.svg'), url('/img/topppaterns.svg');
 }
 .slide-fade-enter-active {
-    transition: all .8s ease;
+    transition: all .9s ease;
     
   }
   .slide-fade-leave-active {
