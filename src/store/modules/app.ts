@@ -1,3 +1,4 @@
+import store from "../index";
 import {
   Module,
   VuexModule
@@ -6,15 +7,14 @@ import {
   // Action,
   // MutationAction
 } from "vuex-module-decorators";
-import store from "../index";
 @Module({
   namespaced: true,
   name: "app",
   store,
   dynamic: true
 })
-class Auth extends VuexModule {
+class App extends VuexModule {
   appName = "Gizmo";
 }
 
-export default Auth;
+export default App;

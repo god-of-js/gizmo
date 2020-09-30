@@ -1,4 +1,16 @@
 $green: green;
+$blue: #1C528A;
+
+// The sass of this project happens to be faulty due to a windows problem.
+@keyframes active_tab {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
 
 .auth__body {
     height: 100vh;
@@ -12,6 +24,16 @@ $green: green;
     flex-direction: column;
     background-size: cover;
     background-image: linear-gradient(to top, #1C528A, rgba(40, 31, 71, 0)), url('/img/authbackground.jpg')
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: #1C528A;
+    width: 13%;
+    position: fixed;
+    color: #ffffff;
+    li {
+    }
 }
 
 .auth__form {
@@ -80,7 +102,7 @@ $green: green;
 }
 
 #input {
-    height: 36px !important;
+    height: 36px;
 }
 
 .auth__form__cont {
@@ -88,11 +110,11 @@ $green: green;
 }
 
 .yellow__btn {
-    background-color: #FFBC44 !important;
+    background-color: #FFBC44;
     color: #000;
     outline: none;
     width: 100%;
-    height: 40px;
+    height: 46px;
 }
 
 .border__radius {
@@ -105,10 +127,16 @@ $green: green;
 }
 
 .active__tab__btn {
-    border-bottom: 3px solid #1C528A;
-    padding-bottom: 4px;
     color: #1C528A;
     transition: transform 0.5s;
+}
+
+.active__tab__btn_indicator {
+    height: 4px;
+    background-color: #1C528A;
+    border-radius: 20px;
+    animation-name: active_tab;
+    animation-duration: 1s;
 }
 
 .v-text-field--filled>.v-input__control>.v-input__slot,
@@ -117,30 +145,40 @@ $green: green;
     /* padding-bottom: 12px!important; */
     min-height: 46px !important;
 }
-.h-100{
+
+.h-100 {
     height: 100vh;
 }
-.h-90{
+
+.h-90 {
     height: 90vh;
 }
-.grey__bottom__img{
+
+.grey__bottom__img {
     background-size: 50% 45%, 10% 20%;
     background-position: right bottom, right top;
     background-repeat: no-repeat;
     background-image: url('/img/patterns.svg'), url('/img/topppaterns.svg');
 }
+
 .slide-fade-enter-active {
     transition: all .9s ease;
-    
-  }
-  .slide-fade-leave-active {
-    transition: all .0s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  }
-  .slide-fade-enter, .slide-fade-leave-to
-  /* .slide-fade-leave-active below version 2.1.8 */ {
-    transform: translateX(10px);
+}
+
+.slide-fade-leave-active {
+    transition: all .0.7s cubic-bezier(0.5, 0.5, 0.8, 1.0);
+    transform: translateX(-10px);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to
+
+/* .slide-fade-leave-active below version 2.1.8 */
+    {
+    transform: translateX(-10px);
     opacity: 0;
-  }
-  .router__link{
-      text-decoration: none;
-  }
+}
+
+.router__link {
+    text-decoration: none;
+}

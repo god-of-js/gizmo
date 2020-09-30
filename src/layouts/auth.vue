@@ -14,22 +14,23 @@
       <div class="font__purple font__bold font__xx__md pb-6">Welcome</div>
       <div class="d-flex font__x__sm font__bold auth__tab__cont pb-6">
         <button
-          :class="
-            componentId === 'login' ? 'tab__btn active__tab__btn' : 'tab__btn'
-          "
+          :class=" componentId === 'login' ? 'tab__btn active__tab__btn' : 'tab__btn'"
           @click="componentId = 'login'"
         >
-          Sign In
+          <span>Sign In </span>
+          <div :class="
+            componentId === 'login' ? 'active__tab__btn_indicator mt-2 ' : ' mt-3'
+          "></div>
         </button>
         <button
-          :class="
-            componentId === 'register'
-              ? 'tab__btn active__tab__btn'
-              : 'tab__btn'
-          "
+          :class=" componentId === 'register' ? 'tab__btn active__tab__btn' : 'tab__btn'"
+           
           @click="componentId = 'register'"
         >
           Create Account
+          <div :class="
+            componentId === 'register' ? 'active__tab__btn_indicator mt-2' : ' mt-3'
+          "></div>
         </button>
       </div>
       <div class="auth__form__cont ">
