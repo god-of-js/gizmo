@@ -54,8 +54,18 @@
       </v-row>
        <v-row>
            <div class="font__ash pl-3">Upload Images of property</div>
-           
+
        </v-row>
     </form>
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+
+@Component({
+  name: "Register"
+})
+export default class AddProperty extends Vue {
+    
+}
+</script>
