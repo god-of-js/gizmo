@@ -32,11 +32,23 @@ const routes: RouteConfig[] = [
   },
   {
     path: "dashboard-layout",
+    name: "Dashboard-layout",
     component: () => import("../layouts/dashboardlayout.vue"),
     children: [
       {
         path: "/dashboard",
-        component: () => import("@/views/dashboard/dashboard.vue")
+        component: () => import("@/views/dashboard/dashboard.vue"),
+        name: "Dashboard",
+        meta: {
+          parent: "dashboard"
+        }
+      },
+      {
+        path: "/add-property",
+        component: () => import("@/views/dashboard/addproperty.vue"),
+        meta: {
+          parent: "dashboard"
+        }
       }
     ]
   },

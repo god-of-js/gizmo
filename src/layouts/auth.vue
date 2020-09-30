@@ -34,7 +34,13 @@
         </button>
       </div>
       <div class="auth__form__cont ">
-        <transition name="slide-fade">
+        <transition 
+          name="slide-left"
+          mode="out-in"
+          @beforeLeave="beforeLeave"
+          @enter="enter"
+          @afterEnter="afterEnter"
+          >
           <component :is="componentId" @load="setLoad($event)"></component>
         </transition>
       </div>
@@ -66,4 +72,62 @@ export default class Auth extends Vue {
 .gizmo__text {
   width: 80%;
 }
+.active__tab__btn {
+    color: #1C528A!important;
+    transition: transform 0.5s;
+}
+
+.active__tab__btn_indicator {
+    height: 4px;
+    background-color: #1C528A;
+    border-radius: 20px;
+    animation-name: active_tab;
+    animation-duration: 0.7s;
+}
+.auth__form {
+    background-image: url('/img/patterns.svg'), url('/img/topppaterns.svg');
+    height: 100vh;
+    width: 60%;
+    background-repeat: no-repeat;
+    background-size: 70% 45%, 16% 20%;
+    background-position: right bottom, right top;
+}
+.tab__btn {
+    color: #C4C4C4;
+    outline: none;
+    width: 50%;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 4px;
+}
+
+.auth__tab__cont {
+    width: 40%;
+}
+
+.auth__form__cont {
+    width: 50%;
+}
+.auth__body {
+    height: 100vh;
+}
+
+.auth__img {
+    height: 100vh;
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    background-size: cover;
+    background-image: linear-gradient(to top, #1C528A, rgba(40, 31, 71, 0)), url('/img/authbackground.jpg')
+}
+@keyframes active_tab {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
 </style>

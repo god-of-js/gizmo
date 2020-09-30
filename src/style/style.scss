@@ -1,113 +1,13 @@
 $green: green;
 $blue: #1C528A;
 
-// The sass of this project happens to be faulty due to a windows problem.
-@keyframes active_tab {
-    from {
-        width: 0%;
-    }
 
-    to {
-        width: 100%;
-    }
-}
 
-.auth__body {
-    height: 100vh;
-}
+@import "./basics/fonts.scss";
+@import "./basics/variables.scss";
+@import "./basics/transitions.scss";
+@import "./basics/universal.scss";
 
-.auth__img {
-    height: 100vh;
-    width: 40%;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    background-size: cover;
-    background-image: linear-gradient(to top, #1C528A, rgba(40, 31, 71, 0)), url('/img/authbackground.jpg')
-}
-
-.sidebar {
-    height: 100vh;
-    background-color: #1C528A;
-    width: 13%;
-    position: fixed;
-    color: #ffffff;
-    li {
-    }
-}
-
-.auth__form {
-    background-image: url('/img/patterns.svg'), url('/img/topppaterns.svg');
-    height: 100vh;
-    width: 60%;
-    background-repeat: no-repeat;
-    background-size: 70% 45%, 16% 20%;
-    background-position: right bottom, right top;
-}
-
-.font__bold {
-    font-weight: bold;
-}
-
-.font__white {
-    color: #ffffff;
-}
-
-.font__purple {
-    color: #1C528A;
-}
-
-.font__ash {
-    color: #C4C4C4;
-}
-
-.font__xx__sm {
-    font-size: 0.6em;
-}
-
-.font__x__sm {
-    font-size: 0.7em;
-}
-
-.font__sm {
-    font-size: 0.9em;
-}
-
-.font__xx__md {
-    font-size: 1em;
-}
-
-.font__x__md {
-    font-size: 1.2em;
-}
-
-.font__md {
-    font-size: 1.4em;
-}
-
-.font__xx__bg {
-    font-size: 1.6em;
-}
-
-.tab__btn {
-    color: #C4C4C4;
-    outline: none;
-    width: 50%;
-    border-bottom: 3px solid transparent;
-    padding-bottom: 4px;
-}
-
-.auth__tab__cont {
-    width: 40%;
-}
-
-#input {
-    height: 36px;
-}
-
-.auth__form__cont {
-    width: 50%;
-}
 
 .yellow__btn {
     background-color: #FFBC44;
@@ -120,65 +20,39 @@ $blue: #1C528A;
 .border__radius {
     border-radius: 5px;
 }
-
 .yellow__btn:hover {
     background-color: #fbb034;
     background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
 }
-
-.active__tab__btn {
-    color: #1C528A;
-    transition: transform 0.5s;
-}
-
-.active__tab__btn_indicator {
-    height: 4px;
-    background-color: #1C528A;
-    border-radius: 20px;
-    animation-name: active_tab;
-    animation-duration: 1s;
-}
-
 .v-text-field--filled>.v-input__control>.v-input__slot,
 .v-text-field--full-width>.v-input__control>.v-input__slot,
 .v-text-field--outlined>.v-input__control>.v-input__slot {
     /* padding-bottom: 12px!important; */
     min-height: 46px !important;
 }
-
+.border__radius {
+    border-radius: 5px;
+}
 .h-100 {
     height: 100vh;
 }
-
 .h-90 {
     height: 90vh;
 }
-
 .grey__bottom__img {
     background-size: 50% 45%, 10% 20%;
     background-position: right bottom, right top;
     background-repeat: no-repeat;
     background-image: url('/img/patterns.svg'), url('/img/topppaterns.svg');
 }
-
-.slide-fade-enter-active {
-    transition: all .9s ease;
-}
-
-.slide-fade-leave-active {
-    transition: all .0.7s cubic-bezier(0.5, 0.5, 0.8, 1.0);
-    transform: translateX(-10px);
-}
-
-.slide-fade-enter,
-.slide-fade-leave-to
-
-/* .slide-fade-leave-active below version 2.1.8 */
-    {
-    transform: translateX(-10px);
-    opacity: 0;
-}
-
 .router__link {
     text-decoration: none;
 }
+.white__img__background {
+    background-image: url('/img/patterns.svg'), url('/img/topppaterns.svg');
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 40% 35%, 10% 17%;
+    background-position: right bottom, right top;
+}
+
