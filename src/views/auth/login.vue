@@ -37,7 +37,9 @@
 import { Component, Vue } from "vue-property-decorator";
 import { AuthModule } from "@/store/modules/auth";
 import { User } from "@/utils/models";
-@Component({})
+@Component({
+  name: "login"
+})
 export default class Login extends Vue {
   private body: User = {
     email: "",
