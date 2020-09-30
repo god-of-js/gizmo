@@ -9,13 +9,6 @@ $blue: #1C528A;
 @import "./basics/universal.scss";
 
 
-.yellow__btn {
-    background-color: #FFBC44;
-    color: #000;
-    outline: none;
-    width: 100%;
-    height: 46px;
-}
 
 .border__radius {
     border-radius: 5px;
@@ -54,5 +47,12 @@ $blue: #1C528A;
     background-repeat: no-repeat;
     background-size: 40% 35%, 10% 17%;
     background-position: right bottom, right top;
+}
+.yellow__btn {
+    background-color: #FFBC44;
+    color: #000;
+    outline: none;
+    width: 100%;
+    height: 46px;
 }
 
