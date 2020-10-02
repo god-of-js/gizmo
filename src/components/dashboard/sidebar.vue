@@ -7,19 +7,22 @@
         v-for="(route, index) in routes"
         :key="index"
         class="mt-4"
-        
       >
-      <div :class="[
-          $router.history.current.meta.parent === route.signal
-            ? 'upper__circle '
-            : ''
-        ]"></div>
-        <div :class="[
-          $router.history.current.meta.parent === route.signal
-            ? 'active__route '
-            : '',
-          routeStyle
-        ]">
+        <div
+          :class="[
+            $router.history.current.meta.parent === route.signal
+              ? 'upper__circle '
+              : ''
+          ]"
+        ></div>
+        <div
+          :class="[
+            $router.history.current.meta.parent === route.signal
+              ? 'active__route '
+              : '',
+            routeStyle
+          ]"
+        >
           <v-icon
             :color="
               $router.history.current.meta.parent === route.signal
@@ -31,11 +34,13 @@
           >
           <span class="font__x__sm">{{ route.name }}</span>
         </div>
-      <div  :class="[
-          $router.history.current.meta.parent === route.signal
-            ? 'lower__circle '
-            : ''
-        ]"></div>
+        <div
+          :class="[
+            $router.history.current.meta.parent === route.signal
+              ? 'lower__circle '
+              : ''
+          ]"
+        ></div>
       </li>
     </ul>
   </nav>
@@ -90,37 +95,37 @@ export default class Sidebar extends Vue {
 </script>
 <style lang="scss" scoped>
 .sidebar {
-    height: 100vh;
-    background-color: #1C528A;
-    width: 15%;
-    position: fixed;
-    color: #ffffff;
-    background-image: url("/img/sidebarpatterns.svg");
-    background-position: bottom;
+  height: 100vh;
+  background-color: #1c528a;
+  width: 15%;
+  position: fixed;
+  color: #ffffff;
+  background-image: url("/img/sidebarpatterns.svg");
+  background-position: bottom;
 }
-.route:hover{
-    background-color: #ffffff;
-    color: #000;
-    opacity: 0.8;
+.route:hover {
+  background-color: #ffffff;
+  color: #000;
+  opacity: 0.8;
 }
-.route{
-    border-top-left-radius: 27px;
-    border-bottom-left-radius: 27px;
+.route {
+  border-top-left-radius: 27px;
+  border-bottom-left-radius: 27px;
 }
-.active__route{
-    background-color: #ffffff;
-    color: #000;
+.active__route {
+  background-color: #ffffff;
+  color: #000;
 }
-.active__route::after{
-    height: 1000px;
-    width: 50px;
-    background-color: red
+.active__route::after {
+  height: 1000px;
+  width: 50px;
+  background-color: red;
 }
-.lower__circle{
-    background-color: #ffffff;
-    border-radius: 50%;
+.lower__circle {
+  background-color: #ffffff;
+  border-radius: 50%;
 }
-.upper__circle{
+.upper__circle {
   // background-color: #ffffff;
   // height: 45px;
   // border-radius: 20px;

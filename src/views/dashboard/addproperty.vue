@@ -2,7 +2,7 @@
   <div class="pa-9">
     <form action="">
       <v-row class="pb-0">
-        <v-col sm="6" md="6" xsm="11"  class="pb-0">
+        <v-col sm="6" md="6" xsm="11" class="pb-0">
           <v-text-field
             label="Property Type"
             id="input"
@@ -52,10 +52,9 @@
           ></v-text-field>
         </v-col>
       </v-row>
-       <v-row>
-           <div class="font__ash pl-3">Upload Images of property</div>
-
-       </v-row>
+      <v-row>
+        <div class="font__ash pl-3">Upload Images of property</div>
+      </v-row>
     </form>
   </div>
 </template>
@@ -65,7 +64,5 @@ import { Component, Vue } from "vue-property-decorator";
 @Component({
   name: "Register"
 })
-export default class AddProperty extends Vue {
-    
-}
+export default class AddProperty extends Vue {}
 </script>

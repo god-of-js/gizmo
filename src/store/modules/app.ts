@@ -14,7 +14,7 @@ import {
   dynamic: true
 })
 class App extends VuexModule {
-  appName= "Gizmo";
+  appName = "Gizmo";
 }
 
 export default App;
