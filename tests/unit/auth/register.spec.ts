@@ -21,8 +21,10 @@ describe("Login.vue", () => {
   const wrapper: any = shallowMount(login, { store, localVue });
   wrapper.setData({
     body: {
-      email: "henryeze019@gmail.com",
-      password: "mmmmmmmm"
+        email: "henryeze019@gmail.com",
+        password: "mmmmmmmm",
+        phone: "08033273377",
+        name: "henry eze"
     }
   });
   afterEach(() => {
