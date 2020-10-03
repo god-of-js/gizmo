@@ -21,10 +21,10 @@ describe("Login.vue", () => {
   const wrapper: any = shallowMount(login, { store, localVue });
   wrapper.setData({
     body: {
-        email: "henryeze019@gmail.com",
-        password: "mmmmmmmm",
-        phone: "08033273377",
-        name: "henry eze"
+      email: "henryeze019@gmail.com",
+      password: "mmmmmmmm",
+      phone: "08033273377",
+      name: "henry eze"
     }
   });
   afterEach(() => {
@@ -35,7 +35,7 @@ describe("Login.vue", () => {
   });
   it("Activated function", async () => {
     await wrapper.find("button").trigger("click");
-    wrapper.vm.$emit("load", true)
+    wrapper.vm.$emit("load", true);
     expect(wrapper.emitted().load[0][0]).to.equal(true);
   });
   it("stop loader", () => {

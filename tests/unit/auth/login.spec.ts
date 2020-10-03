@@ -33,7 +33,7 @@ describe("Login.vue", () => {
   });
   it("Activated function", async () => {
     await wrapper.find("button").trigger("click");
-    wrapper.vm.$emit("load", true)
+    wrapper.vm.$emit("load", true);
     expect(wrapper.emitted().load[0][0]).to.equal(true);
   });
   it("stop loader", () => {

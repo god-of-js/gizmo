@@ -13,7 +13,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 @Component({
-  name: "Dashboard Layout",
+  name: "Dashboard-Layout",
   components: {
     sidebar: () => import("../components/dashboard/sidebar.vue"),
     navbar: () => import("../components/dashboard/nav.vue")

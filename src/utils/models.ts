@@ -10,4 +10,14 @@ interface Response {
 interface Data {
   data: any;
 }
-export { User, Response, Data };
+interface Property {
+  type: string,
+  size: string,
+  noOfRooms?: any,
+  reason: string,
+  location: any,
+  images: any[],
+  bargain: boolean,
+  price: number
+}
+export { User, Response, Data, Property };

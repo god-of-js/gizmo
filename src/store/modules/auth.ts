@@ -10,7 +10,7 @@ import router from "../../router";
 import store from "../index";
 import { Api } from "@/api";
 import { User, Response, Data } from "@/utils/models.ts";
-import { setToken } from "@/services/cookies";
+import { setToken } from "@/utils/cookies";
 import { notify } from "@/utils/alert";
 @Module({
   namespaced: true,
