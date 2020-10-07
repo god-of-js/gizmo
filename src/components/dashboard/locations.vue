@@ -4,6 +4,7 @@
     ref="googleplaces"
     v-model="addr"
     outlined
+    required
     type="text"
   />
 </template>

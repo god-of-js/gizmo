@@ -1,26 +1,25 @@
 <template>
   <div class="ma-2 blue-upload-box">
-    <img :src="img" alt="">
+    <img :src="img" alt="" />
   </div>
 </template>
 <script>
 export default {
   name: "Image-view",
   props: {
-      img: File
+    img: String
   }
 };
 </script>
 <style scoped>
 .blue-upload-box {
   background-color: #1c528a;
-  padding: 7px;
   border-radius: 8px;
-  cursor: pointer;
   width: 60px;
   height: 60px;
 }
-.img {
-  display: none;
+img {
+  width: 100%;
+  height: 100%;
 }
 </style>

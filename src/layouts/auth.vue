@@ -48,9 +48,6 @@
         <transition
           name="slide-left"
           mode="out-in"
-          @beforeLeave="beforeLeave"
-          @enter="enter"
-          @afterEnter="afterEnter"
         >
           <component :is="componentId" @load="setLoad($event)"></component>
         </transition>

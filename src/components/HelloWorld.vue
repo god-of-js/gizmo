@@ -1,143 +1,159 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
+  <div class="cl-upload">
+    <!-- supply h2 heading -->
+    <h2>Upload an Image to Cloudinary</h2>
 
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
+    <!-- create a form that will not submit to a server but will prevent submit and
+    use the upload function as a handle-->
+    <form v-on:submit.prevent="upload">
+      <!-- bind cloud-name to the input -->
+      <label for="cloudname-input">Cloud Name:</label>
+      <input
+        id="cloudname-input"
+        v-model="cloudName"
+        placeholder="Enter cloud_name from dashboard"
+      />
+      <!-- bind preset to the input -->
+      <label for="preset-input">Preset:</label>
+      <input
+        id="preset-input"
+        v-model="preset"
+        placeholder="Enter preset from upload settings"
+      />
+      <!-- allow the user to select an image file and when they have selected it call a function 
+      to handle this event-->
+      <label for="file-input">Upload:</label>
+      <input
+        id="file-input"
+        type="file"
+        accept="image/png, image/jpeg"
+        @change="handleFileChange($event)"
+      />
+      <!-- submit button is disabled until a file is selected -->
+      <button type="submit" :disabled="filesSelected < 1">Upload</button>
+    </form>
 
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br />please join our online
-          <a href="https://community.vuetifyjs.com" target="_blank"
-            >Discord Community</a
-          >
-        </p>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+  </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-
-export default Vue.extend({
-  name: "HelloWorld",
-
-  data: () => ({
-    ecosystem: [
-      {
-        text: "vuetify-loader",
-        href: "https://github.com/vuetifyjs/vuetify-loader"
+<script>
+import axios from "axios";
+import ProgressBar from "vuejs-progress-bar";
+export default {
+  name: "CloudinaryUpload",
+  components: {
+    ProgressBar
+  },
+  data() {
+    const progressBarOptions = {
+      text: {
+        shadowColor: "black",
+        fontSize: 14,
+        fontFamily: "Helvetica",
+        dynamicPosition: true
       },
-      {
-        text: "github",
-        href: "https://github.com/vuetifyjs/vuetify"
+      progress: {
+        color: "#E8C401",
+        backgroundColor: "#000000"
       },
-      {
-        text: "awesome-vuetify",
-        href: "https://github.com/vuetifyjs/awesome-vuetify"
+      layout: {
+        height: 35,
+        width: 140,
+        type: "line",
+        progressPadding: 0,
+        verticalTextAlign: 63
       }
-    ],
-    importantLinks: [
-      {
-        text: "Documentation",
-        href: "https://vuetifyjs.com"
-      },
-      {
-        text: "Chat",
-        href: "https://community.vuetifyjs.com"
-      },
-      {
-        text: "Made with Vuetify",
-        href: "https://madewithvuejs.com/vuetify"
-      },
-      {
-        text: "Twitter",
-        href: "https://twitter.com/vuetifyjs"
-      },
-      {
-        text: "Articles",
-        href: "https://medium.com/vuetify"
+    };
+    return {
+      results: null,
+      errors: [],
+      file: null,
+      filesSelected: 0,
+      cloudName: "",
+      preset: "",
+      tags: "browser-upload",
+      progress: 0,
+      showProgress: false,
+      options: progressBarOptions,
+      fileContents: null,
+      formData: null
+    };
+  },
+  methods: {
+    // function to handle file info obtained from local
+    // file system and set the file state
+    handleFileChange: function(event) {
+      console.log("handlefilechange", event.target.files);
+      //returns an array of files even though multiple not used
+      this.file = event.target.files[0];
+      this.filesSelected = event.target.files.length;
+    },
+    prepareFormData: function() {
+      this.formData = new FormData();
+      this.formData.append("upload_preset", this.preset);
+      this.formData.append("tags", this.tags); // Optional - add tag for image admin in Cloudinary
+      this.formData.append("file", this.fileContents);
+    },
+    // function to handle form submit
+    upload: function() {
+      //no need to look at selected files if there is no cloudname or preset
+      if (this.preset.length < 1 || this.cloudName.length < 1) {
+        this.errors.push("You must enter a cloud name and preset to upload");
+        return;
       }
-    ],
-    whatsNext: [
-      {
-        text: "Explore components",
-        href: "https://vuetifyjs.com/components/api-explorer"
-      },
-      {
-        text: "Select a layout",
-        href: "https://vuetifyjs.com/getting-started/pre-made-layouts"
-      },
-      {
-        text: "Frequently Asked Questions",
-        href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
+      // clear errors
+      else {
+        this.errors = [];
       }
-    ]
-  })
-});
-</script>
+      console.log("upload", this.file.name);
+      let reader = new FileReader();
+      // attach listener to be called when data from file
+      reader.addEventListener(
+        "load",
+        function() {
+          this.fileContents = reader.result;
+          this.prepareFormData();
+          let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/upload`;
+          let requestObj = {
+            url: cloudinaryUploadURL,
+            method: "POST",
+            data: this.formData,
+            onUploadProgress: function(progressEvent) {
+              console.log("progress", progressEvent);
+              this.progress = Math.round(
+                (progressEvent.loaded * 100.0) / progressEvent.total
+              );
+              console.log(this.progress);
+              //bind "this" to access vue state during callback
+            }.bind(this)
+          };
+          //show progress bar at beginning of post
+          this.showProgress = true;
+          axios(requestObj)
+            .then(response => {
+              this.results = response.data;
+              console.log(this.results);
+              console.log("public_id", this.results.public_id);
+            })
+            .catch(error => {
+              this.errors.push(error);
+              console.log(this.error);
+            })
+            .finally(() => {
+              setTimeout(
+                function() {
+                  this.showProgress = false;
+                }.bind(this),
+                1000
+              );
+            });
+        }.bind(this),
+        false
+      );
+      // call for file read if there is a file
+      if (this.file && this.file.name) {
+        reader.readAsDataURL(this.file);
+      }
+    }
+  }
+};

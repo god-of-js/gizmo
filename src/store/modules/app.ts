@@ -10,8 +10,7 @@ import {
 @Module({
   namespaced: true,
   name: "app",
-  store,
-  dynamic: true
+  store
 })
 class App extends VuexModule {
   appName = "Gizmo";

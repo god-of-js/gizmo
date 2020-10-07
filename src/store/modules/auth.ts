@@ -35,20 +35,20 @@ class Auth extends VuexModule {
         notify.error(err.response.data.message, "Error", "topRight");
       });
   }
-  @Action
-  public async login(data: User) {
-    console.log(data);
-    Api()
-      .post("/api/v1/auth/login", data)
-      .then((response: Data) => {
-        console.log(response);
-        notify.success(response.data.message, "Success", "topRight");
-        router.push(`/dashboard`);
-      })
-      .catch((err: Response) => {
-        console.log(err.response);
-        notify.error(err.response.data.message, "Error", "topRight");
-      });
-  }
+  // @Action
+  // public async login(data: User) {
+  //   console.log(data);
+  //   Api()
+  //     .post("/api/v1/auth/login", data)
+  //     .then((response: Data) => {
+  //       console.log(response);
+  //       notify.success(response.data.message, "Success", "topRight");
+  //       router.push(`/dashboard`);
+  //     })
+  //     .catch((err: Response) => {
+  //       console.log(err.response);
+  //       notify.error(err.response.data.message, "Error", "topRight");
+  //     });
+  // }
 }
 export const AuthModule = getModule(Auth);

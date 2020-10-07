@@ -1,3 +1,5 @@
 <template>
-  <div></div>
+  <div>
+    {{this.$store.state.user.user}}
+  </div>
 </template>

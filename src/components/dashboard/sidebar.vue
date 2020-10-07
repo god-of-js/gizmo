@@ -29,7 +29,7 @@
                 ? '#FFBC44'
                 : 'white'
             "
-            class="mr-4 font__sm"
+            class="mr-4 font__sm icon"
             >{{ route.icon }}</v-icon
           >
           <span class="font__x__sm">{{ route.name }}</span>
@@ -107,6 +107,10 @@ export default class Sidebar extends Vue {
   background-color: #ffffff;
   color: #000;
   opacity: 0.8;
+  .icon{
+    color: #000 !important;
+  }
+
 }
 .route {
   border-top-left-radius: 27px;

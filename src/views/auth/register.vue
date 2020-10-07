@@ -48,8 +48,9 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { AuthModule } from "@/store/modules/auth";
-import { User } from "@/utils/models";
+import { Api } from "@/api";
+import { User, Response, Data } from "@/utils/models.ts";
+import { notify } from "@/utils/alert";
 @Component({
   name: "Register"
 })
@@ -68,7 +69,19 @@ export default class Register extends Vue {
   }
   public async createAccount(): Promise<void> {
     this.loaders(true);
-    await AuthModule.register(this.body);
+    Api()
+      .post("/api/v1/user/register", this.body)
+      .then((response: Data) => {
+        console.log(response);
+        notify.success(response.data.message, "Success", "topRight");
+        this.$router.push(
+          `/auth/verify-number/${response.data.verificationDetails.token}`
+        );
+      })
+      .catch((err: Response) => {
+        console.log(err.response);
+        notify.error(err.response.data.message, "Error", "topRight");
+      });
     this.loaders(false);
   }
 }
