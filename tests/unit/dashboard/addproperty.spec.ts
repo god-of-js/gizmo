@@ -8,17 +8,20 @@ describe("addproperty", () => {
         body: {
           type: "",
           size: "",
-          noOfRooms: 0,
+          noOfRooms: "",
+          extra: "",
           location: "",
-          reason: "",
-          images: []
+          state: "",
+          landmark: "",
+          images: [],
+          price: 0,
+          bargain: false
         },
-        disabled: false
+        disabled: true
       };
     }
   });
-  it("throw error if the forms fields are absent", async () => {
-    await wrapper.find("button").trigger("click");
+  it("button should be disabled when all compulsory fields are not filled", () => {
     if (
       wrapper.vm.$data.body.type.length === 0 ||
       wrapper.vm.$data.body.size.length === 0 ||

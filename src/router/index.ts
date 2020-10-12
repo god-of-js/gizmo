@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 // import Home from "../views/Home.vue";
+import dashboardLayout from "./modules/dashboard";
+import AuthServicesLayout from "./modules/authservices";
 
 Vue.use(VueRouter);
 const routes: RouteConfig[] = [
@@ -8,49 +10,12 @@ const routes: RouteConfig[] = [
     path: "*",
     redirect: "/"
   },
+  dashboardLayout,
+  AuthServicesLayout,
   {
     path: "/",
     name: "auth",
     component: () => import("../layouts/auth.vue")
-  },
-  {
-    path: "/auth-services",
-    name: "auth services",
-    component: () => import("../layouts/authservices.vue"),
-    children: [
-      {
-        path: "/auth/verify-number/:id",
-        name: "verify number",
-        component: () => import("../views/auth/verifynumber.vue")
-      },
-      {
-        path: "/auth/change-number",
-        name: "change number",
-        component: () => import("../views/auth/changenumber.vue")
-      }
-    ]
-  },
-  {
-    path: "dashboard-layout",
-    name: "Dashboard-layout",
-    component: () => import("../layouts/dashboardlayout.vue"),
-    children: [
-      {
-        path: "/dashboard",
-        component: () => import("@/views/dashboard/dashboard.vue"),
-        name: "Dashboard",
-        meta: {
-          parent: "dashboard"
-        }
-      },
-      {
-        path: "/add-property",
-        component: () => import("@/views/dashboard/addproperty.vue"),
-        meta: {
-          parent: "dashboard"
-        }
-      }
-    ]
   },
   // {
   //   path: "/",

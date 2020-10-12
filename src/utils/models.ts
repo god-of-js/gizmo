@@ -14,10 +14,12 @@ interface Property {
   type: string;
   size: string;
   noOfRooms?: any;
-  reason: string;
+  extra: string;
   location: any;
   images: any[];
-  bargain: boolean;
-  price: number;
+  ownerId: string,
+  state: string;
+  landmark: string;
+  price: any;
 }
 export { User, Response, Data, Property };

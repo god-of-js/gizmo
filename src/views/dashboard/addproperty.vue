@@ -7,16 +7,16 @@
             label="Property Type(e.g flat or duplex)"
             id="input"
             outlined
-            required
+            v-model="body.type"
             type="text"
           ></v-text-field>
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
           <v-text-field
-            label="Property Size"
+            label="Property Size(specify measuring unit)"
             id="input"
+            v-model="body.size"
             outlined
-            required
             type="text"
           ></v-text-field>
         </v-col>
@@ -28,8 +28,8 @@
             id="input"
             outlined
             class="mb-0"
-            required
-            type="text"
+            v-model="body.noOfRooms"
+            type="number"
           ></v-text-field>
           <div class="mt-n6 mb-2">
             <small
@@ -42,7 +42,7 @@
             label="Price of property"
             id="input"
             outlined
-            required
+            v-model="body.price"
             type="number"
           ></v-text-field>
         </v-col>
@@ -53,7 +53,7 @@
             label="State and local govt"
             id="input"
             outlined
-            required
+            v-model="body.state"
             type="text"
           ></v-text-field>
         </v-col>
@@ -62,7 +62,7 @@
             label="Closest Landmark(a very popular place)"
             id="input"
             outlined
-            required
+            v-model="body.landmark"
             type="text"
           ></v-text-field>
         </v-col>
@@ -79,10 +79,10 @@
         <v-col class="pb-0">
           <v-text-field
             label="Extra Information about property: Indicate things like reason for the sale(optional)"
-            id="input"
             outlined
             class="mb-0"
             type="text"
+            v-model="body.extra"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -109,18 +109,30 @@
         </div>
       </v-row>
       <div class="d-flex justify-end">
-        <button class="green__btn pb-3 pt-3 pl-14  pr-14 font__sm">
-          Add Property
+        <button
+          :class="[
+            disabled === true ? 'disabled__btn' : 'green__btn',
+            ' pb-3 pt-3 pl-16  pr-16 font__x__sm'
+          ]"
+          :disabled="disabled"
+        >
+          <v-progress-circular
+            indeterminate
+            color="purple"
+            v-if="activated"
+          ></v-progress-circular>
+          <span v-if="!activated">Add Property</span>
         </button>
       </div>
     </form>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import { Property } from "../../utils/models";
 import { notify } from "@/utils/alert";
 import { upload } from "../../services/cloudinary";
+import { Api } from "@/api";
 @Component({
   name: "Register",
   components: {
@@ -130,17 +142,40 @@ import { upload } from "../../services/cloudinary";
   }
 })
 export default class AddProperty extends Vue {
-  private body: Property = {
-    type: "",
-    size: "",
-    noOfRooms: "",
-    reason: "",
+  body: Property = {
+    type: "duplex",
+    size: "24 acres",
+    noOfRooms: "50",
+    extra: "the room is leaking",
     location: "",
+    state: "enugu, nsukka",
+    landmark: "comfort oboh",
     images: [],
-    price: 0,
-    bargain: false
+    ownerId: "",
+    price: "4550"
   };
-  private images: string[] = [];
+  disabled = true;
+  activated = false;
+  images: string[] = [];
+  @Watch("body", {
+    immediate: true,
+    deep: true
+  })
+  onPropertyChanged(value: Property, oldValue: Property) {
+    if (
+      value.state.length != 0 &&
+      value.images.length != 0 &&
+      value.landmark.length != 0 &&
+      value.location.length != 0 &&
+      value.price.length != 0 &&
+      value.type.length != 0 &&
+      value.size.length != 0
+    ) {
+      this.disabled = false;
+    } else {
+      this.disabled = true;
+    }
+  }
   public setPlace(e: string): void {
     this.body.location = e; //getting the location from google places api
   }
@@ -149,10 +184,6 @@ export default class AddProperty extends Vue {
     this.images.splice(index, 1); //removes image from display based on index
   }
   public addImage(e: any): void {
-    const formData = new FormData();
-    formData.append(`file`, e);
-    formData.append("upload_preset", "xbcrtnu5");
-    upload(formData);
     const filereader = new FileReader(); // to make the image viewable.
     let url: string;
     filereader.onload = function(evt: any) {
@@ -165,21 +196,30 @@ export default class AddProperty extends Vue {
       this.images.push(url); //adding it to the images arr for view.
     }, 100);
   }
-  public addProperty() {
-    if (this.images.length === 0) {
-      notify.error(
-        "You must add at least   picture of the property",
-        "400",
-        "topCenter"
-      );
-      return "";
-    }
-    // {type, size, noOfRooms, price, state, landmark, location,images, ownerId, extraComment}
-    for (let i = 0; i < this.body.images.length; i++) {
+  public async addProperty() {
+    this.disabled = true;
+    this.activated = true;
+    this.body.ownerId = this.$store.state.user.user._id;
+    this.body.price = Number(this.body.price);
+    this.body.noOfRooms = Number(this.body.noOfRooms);
+    console.log(this.body);
+    for (let i = 0; i < this.images.length; i++) {
       const formData = new FormData();
-      formData.append(`image-${i}`, this.body.images[i]);
-      upload(formData);
+      formData.append(`file`, this.body.images[i]);
+      formData.append("upload_preset", "xbcrtnu5");
+      const url = await upload(formData);
+      this.body.images.push(url);
     }
+    Api()
+      .post("/api/v1/property/add-property", this.body)
+      .then(result => {
+        notify.success(result.data.message, "Success", "topRight");
+        this.disabled = false;
+        this.activated = false;
+      })
+      .catch(err => {
+        notify.error(err.response.data.message, "Error", "topRight");
+      });
   }
 }
 </script>
