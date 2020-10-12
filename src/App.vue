@@ -5,7 +5,11 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-export default Vue.extend({});
+export default Vue.extend({
+  mounted() {
+    alert(process.env.VUE_APP_API_URL)
+  }
+});
 </script>
 <style scoped>
 @font-face {

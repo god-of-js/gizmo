@@ -1,9 +1,8 @@
-const cloudinaryUploadUrl = `https://api.cloudinary.com/v1_1/dh8mksait/upload`;
 import axios from "axios";
 const upload = (formData: any) => {
   console.log(formData);
   axios
-    .post(cloudinaryUploadUrl, formData)
+    .post(process.env.VUE_APP_CLOUDINARY_UPLOAD_URL, formData)
     .then(response => {
       return response.data.url;
     })
