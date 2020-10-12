@@ -106,15 +106,15 @@ export default {
         this.errors = [];
       }
       console.log("upload", this.file.name);
-      let reader = new FileReader();
+      const reader = new FileReader();
       // attach listener to be called when data from file
       reader.addEventListener(
         "load",
         function() {
           this.fileContents = reader.result;
           this.prepareFormData();
-          let cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/upload`;
-          let requestObj = {
+          const cloudinaryUploadURL = `https://api.cloudinary.com/v1_1/${this.cloudName}/upload`;
+          const requestObj = {
             url: cloudinaryUploadURL,
             method: "POST",
             data: this.formData,

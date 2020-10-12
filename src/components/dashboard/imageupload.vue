@@ -17,9 +17,12 @@ export default {
       const fileInput = document.querySelector(".img");
       const file = fileInput.files[0];
       if (!imgCheck(file)) {
-        notify.error("Wrong format of file. Only images are allowed", "Bad Request")
+        notify.error(
+          "Wrong format of file. Only images are allowed",
+          "Bad Request"
+        );
         throw "error";
-      } 
+      }
       this.$emit("imageAdd", file);
     }
   }

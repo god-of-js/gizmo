@@ -45,10 +45,7 @@
         </button>
       </div>
       <div class="auth__form__cont ">
-        <transition
-          name="slide-left"
-          mode="out-in"
-        >
+        <transition name="slide-left" mode="out-in">
           <component :is="componentId" @load="setLoad($event)"></component>
         </transition>
       </div>

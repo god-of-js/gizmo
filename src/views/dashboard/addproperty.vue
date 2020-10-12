@@ -88,19 +88,30 @@
       </v-row>
       <div class="font__ash pb-3">Upload Images of property</div>
       <v-row>
-        <imgUpload @imageAdd="addImage"
-            v-if="images.length < 5" />
-        <div style="position: relative;" v-for="(image, index) in images" :key="index">
-          <div class="d-flex justify-end align-center pa-0" v-if="images.length !== 0">
-            <div class="button d-flex align-center justify-center " @click="removeImage(index)">x</div>
+        <imgUpload @imageAdd="addImage" v-if="images.length < 5" />
+        <div
+          style="position: relative;"
+          v-for="(image, index) in images"
+          :key="index"
+        >
+          <div
+            class="d-flex justify-end align-center pa-0"
+            v-if="images.length !== 0"
+          >
+            <div
+              class="button d-flex align-center justify-center "
+              @click="removeImage(index)"
+            >
+              x
+            </div>
           </div>
-          <imgViewer
-            :img="image"
-          />
+          <imgViewer :img="image" />
         </div>
       </v-row>
       <div class="d-flex justify-end">
-        <button class="green__btn pb-3 pt-3 pl-14  pr-14 font__sm">Add Property</button>
+        <button class="green__btn pb-3 pt-3 pl-14  pr-14 font__sm">
+          Add Property
+        </button>
       </div>
     </form>
   </div>
@@ -109,7 +120,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Property } from "../../utils/models";
 import { notify } from "@/utils/alert";
-import {upload} from "../../services/cloudinary";
+import { upload } from "../../services/cloudinary";
 @Component({
   name: "Register",
   components: {
@@ -134,14 +145,14 @@ export default class AddProperty extends Vue {
     this.body.location = e; //getting the location from google places api
   }
   public removeImage(index: number): void {
-    this.body.images.splice(index,1); //removes image from object based on index
-    this.images.splice(index, 1) //removes image from display based on index
+    this.body.images.splice(index, 1); //removes image from object based on index
+    this.images.splice(index, 1); //removes image from display based on index
   }
   public addImage(e: any): void {
     const formData = new FormData();
     formData.append(`file`, e);
     formData.append("upload_preset", "xbcrtnu5");
-    upload(formData)
+    upload(formData);
     const filereader = new FileReader(); // to make the image viewable.
     let url: string;
     filereader.onload = function(evt: any) {
@@ -149,28 +160,33 @@ export default class AddProperty extends Vue {
     };
     filereader.readAsDataURL(e);
     this.body.images.push(e);
-    setTimeout(() => { //added the timeline due to error. it needed an async would be worked on subsequently.
+    setTimeout(() => {
+      //added the timeline due to error. it needed an async would be worked on subsequently.
       this.images.push(url); //adding it to the images arr for view.
     }, 100);
   }
   public addProperty() {
-    if(this.images.length === 0) {
-      notify.error("You must add at least   picture of the property", "400", "topCenter")
-      return ""
+    if (this.images.length === 0) {
+      notify.error(
+        "You must add at least   picture of the property",
+        "400",
+        "topCenter"
+      );
+      return "";
     }
     // {type, size, noOfRooms, price, state, landmark, location,images, ownerId, extraComment}
-    for(let i = 0; i < this.body.images.length; i++) {
-    const formData = new FormData();
-    formData.append(`image-${i}`, this.body.images[i]);
-    upload(formData)
+    for (let i = 0; i < this.body.images.length; i++) {
+      const formData = new FormData();
+      formData.append(`image-${i}`, this.body.images[i]);
+      upload(formData);
     }
   }
 }
 </script>
-<style  scoped>
+<style scoped>
 .button {
   border-radius: 50%;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   position: absolute;
   top: 0;
   color: #000;

@@ -35,19 +35,19 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import {namespace, Mutation} from "vuex-class"
+import { namespace, Mutation } from "vuex-class";
 import { Api } from "@/api";
 import { User, Response, Data } from "@/utils/models.ts";
 import { notify } from "@/utils/alert";
-import {setProfile, setToken} from "@/utils/cookies.ts"
+import { setProfile, setToken } from "@/utils/cookies.ts";
 
-const user = namespace('user')
+const user = namespace("user");
 
 @Component({
   name: "Login"
 })
 export default class Login extends Vue {
-  @Mutation 'user/setUserData': Function
+  @Mutation "user/setUserData": Function;
   private body: User = {
     email: "",
     password: ""
@@ -67,9 +67,9 @@ export default class Login extends Vue {
       .post("/api/v1/auth/login", this.body)
       .then((response: Data) => {
         setProfile(response.data);
-        setToken(response.data.jwt)
+        setToken(response.data.jwt);
         notify.success(response.data.message, "Success", "topRight");
-        this["user/setUserData"]({ value: response.data })
+        this["user/setUserData"]({ value: response.data });
         // this.getData(response.data);
         this.$router.push(`/dashboard`);
         this.loaders(false);

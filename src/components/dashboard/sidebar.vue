@@ -107,10 +107,9 @@ export default class Sidebar extends Vue {
   background-color: #ffffff;
   color: #000;
   opacity: 0.8;
-  .icon{
+  .icon {
     color: #000 !important;
   }
-
 }
 .route {
   border-top-left-radius: 27px;

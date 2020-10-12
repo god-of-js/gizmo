@@ -11,13 +11,13 @@ interface Data {
   data: any;
 }
 interface Property {
-  type: string,
-  size: string,
-  noOfRooms?: any,
-  reason: string,
-  location: any,
-  images: any[],
-  bargain: boolean,
-  price: number
+  type: string;
+  size: string;
+  noOfRooms?: any;
+  reason: string;
+  location: any;
+  images: any[];
+  bargain: boolean;
+  price: number;
 }
 export { User, Response, Data, Property };

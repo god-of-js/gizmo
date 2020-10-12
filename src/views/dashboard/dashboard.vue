@@ -1,5 +1,5 @@
 <template>
   <div>
-    {{this.$store.state.user.user}}
+    {{ this.$store.state.user.user }}
   </div>
 </template>

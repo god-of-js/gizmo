@@ -1,5 +1,5 @@
 <template>
-<v-text-field
+  <v-text-field
     :label="label"
     ref="googleplaces"
     v-model="addr"
@@ -9,7 +9,7 @@
   />
 </template>
 <script>
-let vueApp
+let vueApp;
 export default {
   props: {
     label: String,
@@ -17,13 +17,13 @@ export default {
     value: String
   },
   data: () => ({
-      lon: "",
-      lat: "",
-      addr: " "
+    lon: "",
+    lat: "",
+    addr: " "
   }),
   watch: {
-    value(newState){
-      this.addr = newState
+    value(newState) {
+      this.addr = newState;
     },
     lon(newState, oldState) {
       this.$emit("placesChange", vueApp.addr);
@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     vueApp = this;
-    this.addr = this.value
+    this.addr = this.value;
     // eslint-disable-next-line
     this.autocomplete = new google.maps.places.Autocomplete(
       this.$refs.googleplaces.$refs.input,
