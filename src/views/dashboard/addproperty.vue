@@ -3,34 +3,21 @@
     <form @submit.prevent="addProperty">
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <v-text-field
-            label="Property Type(e.g flat or duplex)"
-            id="input"
-            outlined
-            v-model="body.type"
-            type="text"
-          ></v-text-field>
+          <c-input :label="'Property Type(e.g flat, land or duplex)'" v-model="body.type"/>
+          
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <v-text-field
-            label="Property Size(specify measuring unit)"
-            id="input"
-            v-model="body.size"
-            outlined
-            type="text"
-          ></v-text-field>
+          <c-input :label="'Property Size(specify measuring unit)'" v-model="body.size"/>
         </v-col>
       </v-row>
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <v-text-field
-            label="Number of Rooms Available"
-            id="input"
-            outlined
+          <c-input
+            :label="'Number of Rooms Available'"
             class="mb-0"
             v-model="body.noOfRooms"
-            type="number"
-          ></v-text-field>
+            :type="'number'"
+          />
           <div class="mt-n6 mb-2">
             <small
               >Optional if property is not a building(e.g acre of land)
@@ -38,33 +25,25 @@
           </div>
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <v-text-field
-            label="Price of property"
-            id="input"
-            outlined
+          <c-input
+            :label="'Price of property'"
             v-model="body.price"
-            type="number"
-          ></v-text-field>
+            :type="'number'"
+          />
         </v-col>
       </v-row>
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <v-text-field
-            label="State and local govt"
-            id="input"
-            outlined
+          <c-input
+            :label="'State and local govt'"
             v-model="body.state"
-            type="text"
-          ></v-text-field>
+          />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <v-text-field
-            label="Closest Landmark(a very popular place)"
-            id="input"
-            outlined
+          <c-input
+            :label="'Closest Landmark(a very popular place)'"
             v-model="body.landmark"
-            type="text"
-          ></v-text-field>
+          />
         </v-col>
       </v-row>
       <v-row class="pb-0">
@@ -77,13 +56,11 @@
       </v-row>
       <v-row class="pb-0">
         <v-col class="pb-0">
-          <v-text-field
-            label="Extra Information about property: Indicate things like reason for the sale(optional)"
-            outlined
+          <c-input
+            :label="'Extra Information about property: Indicate things like reason for the sale(optional)'"
             class="mb-0"
-            type="text"
             v-model="body.extra"
-          ></v-text-field>
+          />
         </v-col>
       </v-row>
       <div class="font__ash pb-3">Upload Images of property</div>
@@ -119,9 +96,9 @@
           <v-progress-circular
             indeterminate
             color="purple"
-            v-if="activated"
+            v-if="loading"
           ></v-progress-circular>
-          <span v-if="!activated">Add Property</span>
+          <span v-if="!loading">Add Property</span>
         </button>
       </div>
     </form>
@@ -143,19 +120,19 @@ import { Api } from "@/api";
 })
 export default class AddProperty extends Vue {
   body: Property = {
-    type: "duplex",
-    size: "24 acres",
-    noOfRooms: "50",
-    extra: "the room is leaking",
+    type: "",
+    size: "",
+    noOfRooms: "",
+    extra: "",
     location: "",
-    state: "enugu, nsukka",
-    landmark: "comfort oboh",
+    state: "",
+    landmark: "",
     images: [],
     ownerId: "",
-    price: "4550"
+    price: ""
   };
   disabled = true;
-  activated = false;
+  loading = false;
   images: string[] = [];
   @Watch("body", {
     immediate: true,
@@ -198,7 +175,7 @@ export default class AddProperty extends Vue {
   }
   public async addProperty() {
     this.disabled = true;
-    this.activated = true;
+    this.loading = true;
     this.body.ownerId = this.$store.state.user.user._id;
     this.body.price = Number(this.body.price);
     this.body.noOfRooms = Number(this.body.noOfRooms);
@@ -215,7 +192,7 @@ export default class AddProperty extends Vue {
       .then(result => {
         notify.success(result.data.message, "Success", "topRight");
         this.disabled = false;
-        this.activated = false;
+        this.loading = false;
       })
       .catch(err => {
         notify.error(err.response.data.message, "Error", "topRight");

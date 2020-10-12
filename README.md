@@ -31,3 +31,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Home page](https://gizmo-front-end.herokuapp.com/).

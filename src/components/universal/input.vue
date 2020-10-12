@@ -4,13 +4,16 @@
     id="input"
     outlined
     :type="type"
+    v-on="$listeners" 
+    @input="$emit('update', $event.target.value)"
   ></v-text-field>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue} from 'vue-property-decorator'
 @Component
-export default class input extends Vue {
-  @Prop({default: 'John doe'}) readonly label!: string
+export default class Input extends Vue {
+  @Prop({default: ''}) readonly label!: string
   @Prop({required: false, type: String, default: 'text'}) readonly type!: string
+  
 }
 </script>

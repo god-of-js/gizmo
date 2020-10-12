@@ -74,9 +74,10 @@ export default class Register extends Vue {
       .then((response: Data) => {
         console.log(response);
         notify.success(response.data.message, "Success", "topRight");
-        this.$router.push(
-          `/auth/verify-number/${response.data.verificationDetails.token}`
-        );
+        this.$router.push('/dashboard');
+        // this.$router.push(
+        //   `/auth/verify-number/${response.data.verificationDetails.token}`
+        // );
       })
       .catch((err: Response) => {
         console.log(err.response);

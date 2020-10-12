@@ -8,39 +8,41 @@
         :key="index"
         class="mt-4"
       >
-        <div
-          :class="[
-            $router.history.current.meta.parent === route.signal
-              ? 'upper__circle '
-              : ''
-          ]"
-        ></div>
-        <div
-          :class="[
-            $router.history.current.meta.parent === route.signal
-              ? 'active__route '
-              : '',
-            routeStyle
-          ]"
-        >
-          <v-icon
-            :color="
+        <router-link :to="route.path" class="no__link white__text">
+          <div
+            :class="[
               $router.history.current.meta.parent === route.signal
-                ? '#FFBC44'
-                : 'white'
-            "
-            class="mr-4 font__sm icon"
-            >{{ route.icon }}</v-icon
+                ? 'upper__circle '
+                : ''
+            ]"
+          ></div>
+          <div
+            :class="[
+              $router.history.current.meta.parent === route.signal
+                ? 'active__route '
+                : '',
+              routeStyle
+            ]"
           >
-          <span class="font__x__sm">{{ route.name }}</span>
-        </div>
-        <div
-          :class="[
-            $router.history.current.meta.parent === route.signal
-              ? 'lower__circle '
-              : ''
-          ]"
-        ></div>
+            <v-icon
+              :color="
+                $router.history.current.meta.parent === route.signal
+                  ? '#FFBC44'
+                  : 'white'
+              "
+              class="mr-4 font__sm icon"
+              >{{ route.icon }}</v-icon
+            >
+            <span class="font__x__sm">{{ route.name }}</span>
+          </div>
+          <div
+            :class="[
+              $router.history.current.meta.parent === route.signal
+                ? 'lower__circle '
+                : ''
+            ]"
+          ></div>
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -64,7 +66,7 @@ export default class Sidebar extends Vue {
       signal: "dashboard"
     },
     {
-      path: "/dashboard",
+      path: "/add-property",
       icon: "mdi-bank",
       name: "My Properties",
       signal: ""
@@ -82,7 +84,7 @@ export default class Sidebar extends Vue {
       signal: ""
     },
     {
-      path: "/dashboard",
+      path: "/",
       icon: "mdi-power",
       name: "Log Out",
       signal: ""
@@ -114,6 +116,9 @@ export default class Sidebar extends Vue {
 .route {
   border-top-left-radius: 27px;
   border-bottom-left-radius: 27px;
+}
+.white__text{
+  color: #ffffff;
 }
 .active__route {
   background-color: #ffffff;

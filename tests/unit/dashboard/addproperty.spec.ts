@@ -32,8 +32,13 @@ describe("addproperty", () => {
   });
   it("form submit", async () => {
     await wrapper.find("button").trigger("click");
-    expect(wrapper.vm.$data.disabled).to.equal(false);
-    expect(wrapper.vm.$data.loading).to.equal(true);
-    // check if action was triggered.
+    await expect(wrapper.vm.$data.disabled).to.equal(true);
+    await expect(wrapper.vm.$data.loading).to.equal(true);
+    await expect(typeof wrapper.vm.$data.body.noOfRooms).to.equal(typeof 0);
+    console.log(typeof wrapper.vm.$data.body.noOfRooms)
+    await expect(typeof wrapper.vm.$data.body.price).to.equal(typeof 0);
+    console.log(typeof wrapper.vm.$data.body.price)
+    console.log(wrapper.vm.$data.body.ownerId.length)
+    await expect(wrapper.vm.$data.body.ownerId.length).to.not.equal(0);
   });
 });
