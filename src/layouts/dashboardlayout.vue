@@ -1,11 +1,11 @@
 <template>
   <div class="d-flex">
-    <sidebar />
+    <sidebar  :key="$router.history.current.name"/>
     <div
       class="white__img__background"
       style="margin-left: 15%; width: calc(100% - 15%);"
     >
-      <navbar />
+      <navbar :key="$router.history.current.name"/>
       <router-view />
     </div>
   </div>

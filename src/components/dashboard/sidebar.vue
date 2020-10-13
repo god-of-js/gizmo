@@ -13,7 +13,7 @@
             :class="[
               $router.history.current.meta.parent === route.signal
                 ? 'upper__circle '
-                : ''
+                : '', 'mt-8'
             ]"
           ></div>
           <div
@@ -69,7 +69,7 @@ export default class Sidebar extends Vue {
       path: "/add-property",
       icon: "mdi-bank",
       name: "My Properties",
-      signal: ""
+      signal: "properties"
     },
     {
       path: "/dashboard",

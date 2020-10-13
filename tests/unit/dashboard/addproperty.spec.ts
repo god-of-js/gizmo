@@ -17,7 +17,8 @@ describe("addproperty", () => {
           price: 0,
           bargain: false
         },
-        disabled: true
+        disabled: true,
+        loading: false
       };
     }
   });
@@ -35,10 +36,6 @@ describe("addproperty", () => {
     await expect(wrapper.vm.$data.disabled).to.equal(true);
     await expect(wrapper.vm.$data.loading).to.equal(true);
     await expect(typeof wrapper.vm.$data.body.noOfRooms).to.equal(typeof 0);
-    console.log(typeof wrapper.vm.$data.body.noOfRooms)
     await expect(typeof wrapper.vm.$data.body.price).to.equal(typeof 0);
-    console.log(typeof wrapper.vm.$data.body.price)
-    console.log(wrapper.vm.$data.body.ownerId.length)
-    await expect(wrapper.vm.$data.body.ownerId.length).to.not.equal(0);
   });
 });
