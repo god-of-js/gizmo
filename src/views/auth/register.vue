@@ -37,7 +37,7 @@
       ></v-text-field>
       <div class="d-flex justify-center ">
         <button
-          class="border__radius yellow__btn font__x__sm  pa-4 d-flex align-center justify-center"
+          class="border__radius yellow__btn font__x__sm  pa-4 d-flex align-center justify-center box__shadow"
           :disabled="disabled"
         >
           Create Account

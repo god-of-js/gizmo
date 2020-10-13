@@ -1,7 +1,16 @@
 <template>
   <nav class="d-flex pt-4 pl-6 pr-6 justify-space-between align-center">
-    <div class="font__purple font__sm font__bold">{{$router.history.current.name}}</div>
-    <div>
+    <div class="font__purple font__sm font__bold">
+      {{ $router.history.current.name }}
+    </div>
+    <div class="d-flex align-center">
+      <router-link to="/add-property" v-if="$router.history.current.name === 'My Properties'">
+        <button
+          class="border__radius yellow__btn font__x__sm pa-0 box__shadow pt-0 mr-12"
+        >
+          Add new property
+        </button>
+      </router-link>
       <v-avatar color="#FFBC44" size="45" class="font__sm">
         <span class="white--text headline">HE</span>
       </v-avatar>
@@ -11,5 +20,9 @@
 <style lang="scss" scoped>
 nav {
   width: 100%;
+}
+.yellow__btn {
+  height: 35px;
+  width: 150px;
 }
 </style>

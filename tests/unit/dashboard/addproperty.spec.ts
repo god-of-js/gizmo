@@ -32,10 +32,10 @@ describe("addproperty", () => {
     else expect(wrapper.vm.$data.disabled).to.equal(false);
   });
   it("form submit", async () => {
-    await wrapper.find("button").trigger("click");
-    await expect(wrapper.vm.$data.disabled).to.equal(true);
-    await expect(wrapper.vm.$data.loading).to.equal(true);
-    await expect(typeof wrapper.vm.$data.body.noOfRooms).to.equal(typeof 0);
-    await expect(typeof wrapper.vm.$data.body.price).to.equal(typeof 0);
+    await wrapper.find(".add__button").trigger("click");
+    expect(wrapper.vm.$data.disabled).to.equal(true);
+    expect(wrapper.vm.$data.loading).to.equal(true);
+    expect(typeof wrapper.vm.$data.body.noOfRooms).to.equal(typeof 0);
+    expect(typeof wrapper.vm.$data.body.price).to.equal(typeof 0);
   });
 });

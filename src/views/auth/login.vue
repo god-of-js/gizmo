@@ -24,7 +24,7 @@
       </div>
       <div class="d-flex justify-center pt-3">
         <button
-          class="border__radius yellow__btn font__sm  d-flex align-center justify-center"
+          class="border__radius yellow__btn font__sm  d-flex align-center justify-center box__shadow"
           :disabled="disabled"
         >
           Sign In

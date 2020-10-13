@@ -89,7 +89,7 @@
         <button
           :class="[
             disabled === true ? 'disabled__btn' : 'green__btn',
-            ' pb-3 pt-3 pl-16  pr-16 font__x__sm'
+            ' pb-3 pt-3 pl-16  pr-16 font__x__sm add__button'
           ]"
           :disabled="disabled"
         >

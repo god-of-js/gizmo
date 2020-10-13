@@ -13,9 +13,13 @@ $blue: #1C528A;
 .border__radius {
     border-radius: 5px;
 }
-.yellow__btn:hover {
+.yellow__btn:active{
+    transform: scale(1.09, 1.06);
+}
+ .yellow__btn:hover {
     background-color: #fbb034;
     background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+    
 }
 .v-text-field--filled>.v-input__control>.v-input__slot,
 .v-text-field--full-width>.v-input__control>.v-input__slot,
@@ -55,16 +59,24 @@ $blue: #1C528A;
     width: 100%;
     height: 46px;
 }
+
 .green__btn{
     background-color: #27B81B;
     color: #ffffff;
     border-radius: 9px;
 }
 .disabled__btn{
-    background-color: #e4e1e1;
-    color: #ffffff;
+    background-color: #e0e0e0;
+    color: #1C528A;
+    font-weight: bold;
     border-radius: 9px;
 }
 .no__link{
     text-decoration: none;
+}
+.box__shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2) !important;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2) !important;
 }
