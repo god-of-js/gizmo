@@ -9,7 +9,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="4" class="pt-0 pl-0 pr-0">
         <notification />
       </v-col>
     </v-row>

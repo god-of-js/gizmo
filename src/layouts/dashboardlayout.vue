@@ -1,12 +1,14 @@
 <template>
   <div class="d-flex">
-    <sidebar  :key="$router.history.current.name"/>
+    <sidebar :key="$router.history.current.name" />
     <div
       class="white__img__background"
       style="margin-left: 15%; width: calc(100% - 15%);"
     >
-      <navbar :key="$router.history.current.name"/>
-      <router-view />
+      <navbar :key="$router.history.current.name" />
+      <transition name="slide-left" mode="out-in">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>

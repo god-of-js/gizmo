@@ -20,7 +20,15 @@ const dashboardLayout: RouteConfig = {
       meta: {
         parent: "properties"
       }
-    }
+    },
+    {
+      path: "/my-properties",
+      component: () => import("@/views/dashboard/properties.vue"),
+      name: "My Properties",
+      meta: {
+        parent: "properties"
+      }
+    },
   ]
 };
 export default dashboardLayout;

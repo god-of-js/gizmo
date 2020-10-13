@@ -66,7 +66,7 @@ export default class Sidebar extends Vue {
       signal: "dashboard"
     },
     {
-      path: "/add-property",
+      path: "/my-properties",
       icon: "mdi-bank",
       name: "My Properties",
       signal: "properties"
