@@ -32,6 +32,7 @@ describe("addproperty", () => {
     else expect(wrapper.vm.$data.disabled).to.equal(false);
   });
   it("form submit", async () => {
+    console.log(wrapper.find(".add__button"))
     await wrapper.find(".add__button").trigger("click");
     expect(wrapper.vm.$data.disabled).to.equal(true);
     expect(wrapper.vm.$data.loading).to.equal(true);

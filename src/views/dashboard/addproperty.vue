@@ -138,6 +138,7 @@ export default class AddProperty extends Vue {
   disabled = true;
   loading = false;
   images: string[] = [];
+  imagesObj: any[] = [];
   @Watch("body", {
     immediate: true,
     deep: true
@@ -161,7 +162,7 @@ export default class AddProperty extends Vue {
     this.body.location = e; //getting the location from google places api
   }
   public removeImage(index: number): void {
-    this.body.images.splice(index, 1); //removes image from object based on index
+    this.imagesObj.splice(index, 1); //removes image from object based on index
     this.images.splice(index, 1); //removes image from display based on index
   }
   public addImage(e: Blob): void {
@@ -171,7 +172,7 @@ export default class AddProperty extends Vue {
       url = evt.target.result; //sending the link to url
     };
     filereader.readAsDataURL(e);
-    this.body.images.push(e);
+    this.imagesObj.push(e);
     setTimeout(() => {
       //added the timeline due to error. it needed an async would be worked on subsequently.
       this.images.push(url); //adding it to the images arr for view.
@@ -183,9 +184,9 @@ export default class AddProperty extends Vue {
     this.body.ownerId = this.$store.state.user.user._id;
     this.body.price = Number(this.body.price);
     this.body.noOfRooms = Number(this.body.noOfRooms);
-    for (let i = 0; i < this.images.length; i++) {
+    for (let i = 0; i < this.imagesObj.length; i++) {
       const formData = new FormData();
-      formData.append(`file`, this.body.images[i]);
+      formData.append(`file`, this.imagesObj[i]);
       formData.append("upload_preset", "xbcrtnu5");
       const url = await upload(formData);
       this.body.images.push(url);
