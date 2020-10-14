@@ -17,7 +17,7 @@ interface Property {
   extra: string;
   location: any;
   images: any[];
-  ownerId: string,
+  ownerId: string;
   state: string;
   landmark: string;
   price: any;

@@ -6,7 +6,7 @@
     "
   >
     <div class="mb-16 font__md">0</div>
-    <div class="sub__div">{{ text }}</div>
+    <div class="sub__div font__sm">{{ text }}</div>
   </div>
 </template>
 <script lang="ts">

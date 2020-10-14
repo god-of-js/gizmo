@@ -1,7 +1,6 @@
 import {
   Module,
   VuexModule,
-  getModule,
   Mutation,
   Action
   // MutationAction
@@ -10,14 +9,14 @@ import router from "../../router";
 import store from "../index";
 import { Api } from "@/api";
 import { User, Response, Data } from "@/utils/models.ts";
-import { setToken, getProfile } from "@/utils/cookies";
+import { getProfile } from "@/utils/cookies";
 import { notify } from "@/utils/alert";
 const getUser = () => {
   const token = getProfile("profile-token");
   const userObj: any = JSON.parse(token !== undefined ? token : "");
   return userObj.data;
 };
-let gottenUser: any;
+let gottenUser: User;
 @Module({
   namespaced: true,
   name: "user",

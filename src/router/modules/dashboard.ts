@@ -28,7 +28,7 @@ const dashboardLayout: RouteConfig = {
       meta: {
         parent: "properties"
       }
-    },
+    }
   ]
 };
 export default dashboardLayout;

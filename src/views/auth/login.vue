@@ -35,14 +35,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { namespace, Mutation } from "vuex-class";
+import {  Mutation } from "vuex-class";
 import { Api } from "@/api";
 import { User, Response, Data } from "@/utils/models.ts";
 import { notify } from "@/utils/alert";
 import { setProfile, setToken } from "@/utils/cookies.ts";
-
-const user = namespace("user");
-
 @Component({
   name: "Login"
 })
@@ -54,8 +51,6 @@ export default class Login extends Vue {
   };
   private disabled = false;
   private show = false;
-  // @user.Action
-  // private getData!: (model) => Promise<AxiosResponse>;
   // henryeze019@gmail.com 08033283828;
   public loaders(value: any): void {
     this.$emit("load", value);

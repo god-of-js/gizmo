@@ -13,7 +13,8 @@
             :class="[
               $router.history.current.meta.parent === route.signal
                 ? 'upper__circle '
-                : '', 'mt-8'
+                : '',
+              'mt-8'
             ]"
           ></div>
           <div
@@ -117,7 +118,7 @@ export default class Sidebar extends Vue {
   border-top-left-radius: 27px;
   border-bottom-left-radius: 27px;
 }
-.white__text{
+.white__text {
   color: #ffffff;
 }
 .active__route {

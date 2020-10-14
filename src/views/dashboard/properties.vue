@@ -8,24 +8,54 @@
         <v-col>REACTIONS</v-col>
         <v-col>ACTIONS</v-col>
       </v-row>
-      <v-row class=" border__bottom font__sm pt-2 pb-1" v-for="(property, index) in 5" :key="index">
-        <v-col>{{index+1}}</v-col>
-        <v-col>Duplex</v-col>
-        <v-col class="date">08 Mar 2020</v-col>
+      <v-row
+        class=" border__bottom font__sm pt-2 pb-1"
+        v-for="(property, index) in sellerProperties"
+        :key="index"
+      >
+        <v-col>{{ index + 1 }}</v-col>
+        <v-col>{{property.type}}</v-col>
+        <v-col class="date">{{property.createdAt? property.createdAt : "03 Mar 2020" }}</v-col>
         <v-col>
-            <span class="mr-1"><v-icon color="#E45865" class="icon">mdi-heart</v-icon> <span>1</span></span>
-            <span class="ml-1"><v-icon color="#fbb034" class="icon">mdi-chat</v-icon> <span>1</span></span>
-          
-          
+          <span class="mr-1"
+            ><v-icon color="#E45865" class="icon">mdi-heart</v-icon>
+            <span>1</span></span
+          >
+          <span class="ml-1"
+            ><v-icon color="#fbb034" class="icon">mdi-chat</v-icon>
+            <span>1</span></span
+          >
         </v-col>
         <v-col>
-          <button class="ml-1 mr-1"><v-icon class="icon">mdi-eye</v-icon></button>
-          <button class="ml-1 mr-1"><v-icon class="icon">mdi-pencil</v-icon></button>
+          <router-link class="ml-1 mr-1 router__link" :to="`/properties/view/${property.ownerId}/${property._id}`">
+            <v-icon class="icon">mdi-eye</v-icon>
+          </router-link>
+          <router-link class="ml-1 mr-1 router__link"  :to="`/properties/edit/${property.ownerId}/${property._id}`">
+            <v-icon class="icon">mdi-pencil</v-icon>
+          </router-link>
         </v-col>
       </v-row>
     </section>
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+// import {AxiosResponse} from "axios"
+import PropertiesModule from "@/store/modules/properties";
+import { getModule } from "vuex-module-decorators";
+@Component({
+  name: "Properties"
+})
+export default class Properties extends Vue {
+  properties = getModule(PropertiesModule, this.$store);
+  mounted() {
+    this.properties.getSellerProperties();
+  }
+  get sellerProperties() {
+    return this.$store.state.properties.sellerProperties
+  }
+}
+</script>
 <style lang="scss" scoped>
 .table {
   .border__bottom {
@@ -34,8 +64,8 @@
   .date {
     color: #7e7e7e;
   }
-  .icon{
-      font-size: 1.3em;
+  .icon {
+    font-size: 1.3em;
   }
 }
 </style>

@@ -5,13 +5,19 @@
       <span class="font__xx__md">Notifications</span>
     </div>
     <div class="notifications">
-      <div class="notification pt-7 d-flex align-center" v-for="(notification, index) in 5" :key="index">
+      <div
+        class="notification pt-7 d-flex align-center"
+        v-for="(notification, index) in 5"
+        :key="index"
+      >
         <v-avatar color="#FFBC44" size="40" class="font__sm">
           <span class="white--text headline">HE</span>
         </v-avatar>
         <div class="pl-3">
-            <div class="not__text font__bold">John Doe added your house to favorites</div>
-            <div class="not__time font__x__sm">10 mins ago</div>
+          <div class="not__text font__bold">
+            John Doe added your house to favorites
+          </div>
+          <div class="not__time font__x__sm">10 mins ago</div>
         </div>
       </div>
     </div>
@@ -26,11 +32,11 @@
   .v__icon {
     font-size: 1.3em;
   }
-  .not__text{
-      font-size: 0.8em;
+  .not__text {
+    font-size: 0.8em;
   }
-  .not__time{
-      color: #A1A1A1;
+  .not__time {
+    color: #a1a1a1;
   }
 }
 </style>

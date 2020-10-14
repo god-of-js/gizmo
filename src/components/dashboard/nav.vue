@@ -4,7 +4,10 @@
       {{ $router.history.current.name }}
     </div>
     <div class="d-flex align-center">
-      <router-link to="/add-property" v-if="$router.history.current.name === 'My Properties'">
+      <router-link
+        to="/add-property"
+        v-if="$router.history.current.name === 'My Properties'"
+      >
         <button
           class="border__radius yellow__btn font__x__sm pa-0 box__shadow pt-0 mr-12"
         >

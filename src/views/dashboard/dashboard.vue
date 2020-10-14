@@ -5,7 +5,14 @@
         <div class=""><b>Welcome,</b> John Doe</div>
         <v-row class="pt-6">
           <v-col v-for="(card, index) in cards" :key="index">
-            <dashcard  class="ma-3 ml-0 " :bgColor="card.bgColor" :bgImg="card.bgImg" :bgPos="card.bgPos" :bgSize="card.bgSize" :text="card.text"/>
+            <dashcard
+              class="ma-3 ml-0 "
+              :bgColor="card.bgColor"
+              :bgImg="card.bgImg"
+              :bgPos="card.bgPos"
+              :bgSize="card.bgSize"
+              :text="card.text"
+            />
           </v-col>
         </v-row>
       </v-col>
@@ -46,7 +53,7 @@ export default class Dashboard extends Vue {
       bgPos: "right top",
       bgSize: "120px 120px",
       text: "Number of bought properties"
-    },
+    }
   ];
   get userName() {
     return this.$store.state.user.user.name;

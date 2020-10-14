@@ -63,7 +63,7 @@ export default class Register extends Vue {
   };
   private disabled = false;
   private show = false;
-  public loaders(value: any): void {
+  public loaders(value: boolean): void {
     this.$emit("load", value);
     this.disabled = value;
   }
@@ -74,7 +74,7 @@ export default class Register extends Vue {
       .then((response: Data) => {
         console.log(response);
         notify.success(response.data.message, "Success", "topRight");
-        this.$router.push('/dashboard');
+        this.$router.push("/dashboard");
         // this.$router.push(
         //   `/auth/verify-number/${response.data.verificationDetails.token}`
         // );

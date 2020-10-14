@@ -3,11 +3,16 @@
     <form @submit.prevent="addProperty">
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input :label="'Property Type(e.g flat, land or duplex)'" v-model="body.type"/>
-          
+          <c-input
+            :label="'Property Type(e.g flat, land or duplex)'"
+            v-model="body.type"
+          />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input :label="'Property Size(specify measuring unit)'" v-model="body.size"/>
+          <c-input
+            :label="'Property Size(specify measuring unit)'"
+            v-model="body.size"
+          />
         </v-col>
       </v-row>
       <v-row class="pb-0">
@@ -34,10 +39,7 @@
       </v-row>
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input
-            :label="'State and local govt'"
-            v-model="body.state"
-          />
+          <c-input :label="'State and local govt'" v-model="body.state" />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
           <c-input
@@ -57,7 +59,9 @@
       <v-row class="pb-0">
         <v-col class="pb-0">
           <c-input
-            :label="'Extra Information about property: Indicate things like reason for the sale(optional)'"
+            :label="
+              'Extra Information about property: Indicate things like reason for the sale(optional)'
+            "
             class="mb-0"
             v-model="body.extra"
           />
@@ -138,7 +142,7 @@ export default class AddProperty extends Vue {
     immediate: true,
     deep: true
   })
-  onPropertyChanged(value: Property, oldValue: Property) {
+  onPropertyChanged(value: Property) {
     if (
       value.state.length != 0 &&
       value.images.length != 0 &&
@@ -160,7 +164,7 @@ export default class AddProperty extends Vue {
     this.body.images.splice(index, 1); //removes image from object based on index
     this.images.splice(index, 1); //removes image from display based on index
   }
-  public addImage(e: any): void {
+  public addImage(e: Blob): void {
     const filereader = new FileReader(); // to make the image viewable.
     let url: string;
     filereader.onload = function(evt: any) {
@@ -179,7 +183,6 @@ export default class AddProperty extends Vue {
     this.body.ownerId = this.$store.state.user.user._id;
     this.body.price = Number(this.body.price);
     this.body.noOfRooms = Number(this.body.noOfRooms);
-    console.log(this.body);
     for (let i = 0; i < this.images.length; i++) {
       const formData = new FormData();
       formData.append(`file`, this.body.images[i]);
