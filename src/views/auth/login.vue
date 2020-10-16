@@ -58,7 +58,6 @@ export default class Login extends Vue {
   }
   public async login(): Promise<void> {
     this.loaders(true);
-    alert(process.env.API_URL + "api Url");
     Api()
       .post("/api/v1/auth/login", this.body)
       .then((response: Data) => {

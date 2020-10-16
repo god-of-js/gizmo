@@ -15,6 +15,6 @@ export default Vue.extend({});
 * {
   font-family: poppins !important ;
 }
-@import url("./style/style.scss");
 @import url("./style/mobile.scss");
+@import url("./style/style.scss");
 </style>

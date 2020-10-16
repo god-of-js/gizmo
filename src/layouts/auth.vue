@@ -132,4 +132,42 @@ export default class Auth extends Vue {
     width: 100%;
   }
 }
+@media only screen and (max-width: 950px) {
+    .auth__form__cont{
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 741px) {
+    .auth__tab__cont {
+        width: 50%;
+    }
+    .auth__form {
+        width: 100%;
+        background-size: 75% 40%, 17% 15%;
+
+    }
+    .auth__img{
+        display: none;
+    }
+}
+@media only screen and (max-width: 488px) {
+    .auth__form {
+        background-size: 79% 40%, 17% 15%;
+    }
+    
+}
+@media only screen and (max-width: 400px) {
+    .auth__form {
+        background-size: 86% 30%, 17% 15%;
+    }
+    .auth__form__cont{
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 370px) {
+    .auth__tab__cont {
+        width: 70%;
+    }
+}
+
 </style>

@@ -1,5 +1,4 @@
 import axios from "axios";
-const baseUrl = "";
 import { getToken } from "@/utils/cookies";
 const token = getToken();
 export const Api = () =>
