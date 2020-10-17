@@ -35,7 +35,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import {  Mutation } from "vuex-class";
+import { Mutation } from "vuex-class";
 import { Api } from "@/api";
 import { User, Response, Data } from "@/utils/models.ts";
 import { notify } from "@/utils/alert";

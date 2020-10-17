@@ -13,7 +13,7 @@ import { getProfile } from "@/utils/cookies";
 import { notify } from "@/utils/alert";
 const getUser = (): object => {
   let token = getProfile("profile-token");
-  if(!token) token = "{}";
+  if (!token) token = "{}";
   const userObj: any = JSON.parse(token);
   return userObj.data;
 };
@@ -24,7 +24,7 @@ let gottenUser: User;
   store
 })
 export default class UserMod extends VuexModule {
-  user = gottenUser?? (getUser() ?? {});
+  user = gottenUser ?? getUser() ?? {};
   jwt = "";
   @Mutation
   public setUserData(data: any) {

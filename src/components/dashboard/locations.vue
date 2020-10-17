@@ -1,57 +1,53 @@
 <template>
-  <v-text-field
-    :label="label"
-    ref="googleplaces"
-    v-model="addr"
-    outlined
-    required
-    type="text"
-  />
+  <vue-google-autocomplete
+    ref="address"
+    id="map"
+    classname="form-control"
+    placeholder="Please type your address"
+    v-on:placechanged="getAddressData"
+    country="ng"
+  >
+  </vue-google-autocomplete>
 </template>
 <script>
 let vueApp;
+import VueGoogleAutocomplete from "vue-google-autocomplete";
 export default {
   props: {
     label: String,
     isOutlined: Boolean,
-    value: String
+    value: String,
+  },
+  components: {
+    VueGoogleAutocomplete,
   },
   data: () => ({
-    lon: "",
-    lat: "",
-    addr: " "
+    addr: " ",
   }),
   watch: {
     value(newState) {
       this.addr = newState;
     },
-    lon(newState, oldState) {
-      this.$emit("placesChange", vueApp.addr);
-    },
     addr(newState, oldState) {
       this.$emit("placesChange", vueApp.addr);
     },
-    lat(newState, oldState) {
-      this.$emit("placesChange", vueApp.addr);
-    }
   },
   mounted() {
+    this.$refs.address.focus();
     vueApp = this;
     this.addr = this.value;
-    // eslint-disable-next-line
-    this.autocomplete = new google.maps.places.Autocomplete(
-      this.$refs.googleplaces.$refs.input,
-      { types: ["geocode"] }
-    );
-    this.autocomplete.addListener("place_changed", () => {
-      const place = this.autocomplete.getPlace();
-      const address = place.formatted_address;
-      const lat = place.geometry.location.lat();
-      const lon = place.geometry.location.lng();
-      this.addr = address;
-      this.lon = lon;
-      this.lat = lat;
-    });
-  }
+  },
+  methods: {
+    /**
+     * When the location found
+     * @param {Object} addressData Data of the found location
+     * @param {Object} placeResultData PlaceResult object
+     * @param {String} id Input container ID
+     */
+    getAddressData: function(addressData, placeResultData, id) {
+      this.addr = addressData;
+      console.log(this.addr)
+    },
+  },
 };
 </script>

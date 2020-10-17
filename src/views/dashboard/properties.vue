@@ -14,8 +14,10 @@
         :key="index"
       >
         <v-col>{{ index + 1 }}</v-col>
-        <v-col>{{property.type}}</v-col>
-        <v-col class="date">{{property.createdAt? property.createdAt : "03 Mar 2020" }}</v-col>
+        <v-col>{{ property.type }}</v-col>
+        <v-col class="date">{{
+          property.createdAt ? property.createdAt : "03 Mar 2020"
+        }}</v-col>
         <v-col>
           <span class="mr-1"
             ><v-icon color="#E45865" class="icon">mdi-heart</v-icon>
@@ -27,10 +29,16 @@
           >
         </v-col>
         <v-col>
-          <router-link class="ml-1 mr-1 router__link" :to="`/properties/view/${property.ownerId}/${property._id}`">
+          <router-link
+            class="ml-1 mr-1 router__link"
+            :to="`/properties/view/${property.ownerId}/${property._id}`"
+          >
             <v-icon class="icon">mdi-eye</v-icon>
           </router-link>
-          <router-link class="ml-1 mr-1 router__link"  :to="`/properties/edit/${property.ownerId}/${property._id}`">
+          <router-link
+            class="ml-1 mr-1 router__link"
+            :to="`/properties/edit/${property.ownerId}/${property._id}`"
+          >
             <v-icon class="icon">mdi-pencil</v-icon>
           </router-link>
         </v-col>
@@ -52,7 +60,7 @@ export default class Properties extends Vue {
     this.properties.getSellerProperties();
   }
   get sellerProperties() {
-    return this.$store.state.properties.sellerProperties
+    return this.$store.state.properties.sellerProperties;
   }
 }
 </script>

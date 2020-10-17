@@ -1,9 +1,10 @@
 import addproperty from "@/views/dashboard/addproperty.vue";
-import { shallowMount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import { expect } from "chai";
-import sinon from "sinon"
+import sinon from "sinon";
 describe("addproperty", () => {
-  const wrapper = shallowMount(addproperty, {
+  const clickHandler = sinon.stub();
+  const wrapper = mount(addproperty, {
     data: () => {  
       return {
         body: {
@@ -20,9 +21,10 @@ describe("addproperty", () => {
         disabled: true,
         loading: false
       };
-    }
+    },
+    propsData: {clickHandler}
   });
-  const spy = sinon.spy();
+  
   it("button should be disabled when all compulsory fields are not filled", async () => {
       expect(wrapper.vm.$data.disabled).to.equal(true);
   });
@@ -43,13 +45,12 @@ describe("addproperty", () => {
       expect(wrapper.vm.$data.disabled).to.equal(false);
   });
   it("Check variables been passed in", async () => {
-    wrapper.find("button.add__button").trigger("click");
-    const clickSpy = sinon.spy(addproperty)   
-
-    console.log(wrapper.vm.$data.disabled)
-    expect(wrapper.vm.$data.disabled).to.equal(true);
-    expect(wrapper.vm.$data.loading).to.equal(true);
-    expect(typeof wrapper.vm.$data.body.noOfRooms).to.equal(typeof 0);
-    expect(typeof wrapper.vm.$data.body.price).to.equal(typeof 0);
+    
+    await wrapper.find(".add__button").trigger("click");
+    // sinon.spy(addproperty.prototype, "addProperty");
+    // expect(wrapper.vm.$data.disabled).to.equal(true);
+    expect(clickHandler.called).to.equal(true);
+    // expect(typeof wrapper.vm.$data.body.noOfRooms).to.equal(typeof 0);
+    // expect(typeof wrapper.vm.$data.body.price).to.equal(typeof 0);
   });
 });

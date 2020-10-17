@@ -9,7 +9,9 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-@Component
+@Component({
+  name: "Custom-Input"
+})
 export default class Input extends Vue {
   @Prop({ default: "" }) readonly label!: string;
   @Prop({ required: false, type: String, default: "text" })
