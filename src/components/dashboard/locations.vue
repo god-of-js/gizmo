@@ -2,7 +2,7 @@
   <vue-google-autocomplete
     ref="address"
     id="map"
-    classname="form-control"
+    classname="locations"
     placeholder="Please type your address"
     v-on:placechanged="getAddressData"
     country="ng"
@@ -46,8 +46,17 @@ export default {
      */
     getAddressData: function(addressData, placeResultData, id) {
       this.addr = addressData;
-      console.log(this.addr)
+      console.log(this.addr);
     },
   },
 };
 </script>
+<style>
+.locations{
+  width: 100%;
+  outline: none;
+  border: 1px solid #eeeeee;
+  padding: 10px;
+  border-radius: 6px;
+}
+</style>

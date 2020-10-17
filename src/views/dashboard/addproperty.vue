@@ -39,7 +39,7 @@
       </v-row>
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input :label="'State and local govt'" v-model="body.state" />
+          <c-input :label="'Local Government'" v-model="body.state" />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
           <c-input
@@ -158,7 +158,7 @@ export default class AddProperty extends Vue {
       this.disabled = true;
     }
   }
-  public setPlace(e: string): void {
+  public setPlace(e: object): void {
     this.body.location = e; //getting the location from google places api
   }
   public removeImage(index: number): void {
