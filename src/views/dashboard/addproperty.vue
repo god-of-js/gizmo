@@ -168,7 +168,7 @@ export default class AddProperty extends Vue {
   public addImage(e: Blob): void {
     const filereader = new FileReader(); // to make the image viewable.
     let url: string;
-    filereader.onload = function(evt: any) {
+    filereader.onload = (evt: any): void => {
       url = evt.target.result; //sending the link to url
     };
     filereader.readAsDataURL(e);

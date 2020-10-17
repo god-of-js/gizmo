@@ -44,7 +44,7 @@ describe("addproperty", () => {
   });
   it("Check variables been passed in", async () => {
     wrapper.find("button.add__button").trigger("click");
-    const clickSpy = sinon.spy(addproperty.component)
+    const clickSpy = sinon.spy(addproperty)   
 
     console.log(wrapper.vm.$data.disabled)
     expect(wrapper.vm.$data.disabled).to.equal(true);
