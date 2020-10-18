@@ -3,13 +3,13 @@
     <form @submit.prevent="addProperty">
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input
+          <cinput
             :label="'Property Type(e.g flat, land or duplex)'"
             v-model="body.type"
           />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input
+          <cinput
             :label="'Property Size(specify measuring unit)'"
             v-model="body.size"
           />
@@ -17,7 +17,7 @@
       </v-row>
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input
+          <cinput
             :label="'Number of Rooms Available'"
             class="mb-0"
             v-model="body.noOfRooms"
@@ -30,7 +30,7 @@
           </div>
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input
+          <cinput
             :label="'Price of property'"
             v-model="body.price"
             :type="'number'"
@@ -39,10 +39,10 @@
       </v-row>
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input :label="'Local Government'" v-model="body.state" />
+          <cinput :label="'Local Government'" v-model="body.state" />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <c-input
+          <cinput
             :label="'Closest Landmark(a very popular place)'"
             v-model="body.landmark"
           />
@@ -58,7 +58,7 @@
       </v-row>
       <v-row class="pb-0">
         <v-col class="pb-0">
-          <c-input
+          <cinput
             :label="
               'Extra Information about property: Indicate things like reason for the sale(optional)'
             "
@@ -148,7 +148,7 @@ export default class AddProperty extends Vue {
       value.state.length != 0 &&
       value.images.length != 0 &&
       value.landmark.length != 0 &&
-      value.location.length != 0 &&
+      value.location.country.length != 0 &&
       value.price.length != 0 &&
       value.type.length != 0 &&
       value.size.length != 0
