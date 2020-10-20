@@ -1,7 +1,6 @@
 <template>
   <v-text-field
     :label="label"
-    id="input"
     outlined
     :type="type"
     v-on="$listeners"
