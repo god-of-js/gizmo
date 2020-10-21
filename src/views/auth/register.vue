@@ -49,12 +49,14 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Api } from "@/api";
+import { Mutation } from "vuex-class";
 import { User, Response, Data } from "@/utils/models.ts";
 import { notify } from "@/utils/alert";
 @Component({
   name: "Register"
 })
 export default class Register extends Vue {
+  @Mutation "user/setUserData": Function;
   private body: User = {
     email: "",
     password: "",
@@ -73,6 +75,7 @@ export default class Register extends Vue {
       .post("/api/v1/user/register", this.body)
       .then((response: Data) => {
         console.log(response);
+        this["user/setUserData"]({ value: response.data });
         notify.success(response.data.message, "Success", "topRight");
         this.$router.push("/dashboard");
         // this.$router.push(

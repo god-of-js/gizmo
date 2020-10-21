@@ -93,7 +93,7 @@
         <button
           :class="[
             disabled === true ? 'disabled__btn' : 'green__btn',
-            ' pb-3 pt-3 pl-16  pr-16 font__x__sm add__button'
+            ' pb-3 pt-3 pl-16  pr-16 font__x__sm add__button',
           ]"
           :disabled="disabled"
         >
@@ -119,8 +119,8 @@ import { Api } from "@/api";
   components: {
     locations: () => import("@/components/dashboard/locations.vue"),
     imgUpload: () => import("@/components/dashboard/imageupload.vue"),
-    imgViewer: () => import("@/components/dashboard/imgview.vue")
-  }
+    imgViewer: () => import("@/components/dashboard/imgview.vue"),
+  },
 })
 export default class AddProperty extends Vue {
   body: Property = {
@@ -133,7 +133,7 @@ export default class AddProperty extends Vue {
     landmark: "",
     images: [],
     ownerId: "",
-    price: ""
+    price: "",
   };
   disabled = true;
   loading = false;
@@ -141,12 +141,11 @@ export default class AddProperty extends Vue {
   imagesObj: any[] = [];
   @Watch("body", {
     immediate: true,
-    deep: true
+    deep: true,
   })
   onPropertyChanged(value: Property) {
     if (
       value.state.length != 0 &&
-      value.images.length != 0 &&
       value.landmark.length != 0 &&
       value.location.country.length != 0 &&
       value.price.length != 0 &&
@@ -173,17 +172,23 @@ export default class AddProperty extends Vue {
     };
     filereader.readAsDataURL(e);
     this.imagesObj.push(e);
+    console.log(this.imagesObj)
     setTimeout(() => {
       //added the timeline due to error. it needed an async would be worked on subsequently.
       this.images.push(url); //adding it to the images arr for view.
     }, 100);
   }
   public async addProperty() {
+    if (this.imagesObj.length === 0) {
+      notify.error("at least one image must be provided", "Error", "topRight");
+      return "err";
+    }
     this.disabled = true;
     this.loading = true;
     this.body.ownerId = this.$store.state.user.user._id;
     this.body.price = Number(this.body.price);
     this.body.noOfRooms = Number(this.body.noOfRooms);
+
     for (let i = 0; i < this.imagesObj.length; i++) {
       const formData = new FormData();
       formData.append(`file`, this.imagesObj[i]);
@@ -193,13 +198,15 @@ export default class AddProperty extends Vue {
     }
     Api()
       .post("/api/v1/property/add-property", this.body)
-      .then(result => {
+      .then((result) => {
         notify.success(result.data.message, "Success", "topRight");
         this.disabled = false;
         this.loading = false;
       })
-      .catch(err => {
+      .catch((err) => {
         notify.error(err.response.data.message, "Error", "topRight");
+        this.disabled = false;
+        this.loading = false;
       });
   }
 }

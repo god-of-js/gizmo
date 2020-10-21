@@ -55,7 +55,7 @@ export default {
 .locations{
   width: 100%;
   outline: none;
-  border: 1px solid #eeeeee;
+  border: 1.5px solid rgba(0, 0, 0, 0.42);
   padding: 10px;
   border-radius: 6px;
 }
