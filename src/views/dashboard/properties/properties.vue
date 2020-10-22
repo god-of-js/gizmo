@@ -31,13 +31,13 @@
         <v-col>
           <router-link
             class="ml-1 mr-1 router__link"
-            :to="`/properties/view/${property.ownerId}/${property._id}`"
+            :to="`/properties/view-property/${property._id}`"
           >
             <v-icon class="icon">mdi-eye</v-icon>
           </router-link>
           <router-link
             class="ml-1 mr-1 router__link"
-            :to="`/properties/edit/${property.ownerId}/${property._id}`"
+            :to="`/properties/edit-property/${property._id}`"
           >
             <v-icon class="icon">mdi-pencil</v-icon>
           </router-link>

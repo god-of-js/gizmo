@@ -17,6 +17,8 @@ const routes: RouteConfig[] = [
     name: "auth",
     component: () => import("../layouts/auth.vue")
   },
+  { path: "/properties/view-property/*" },
+  { path: "/properties/edit-property/*" },
   // {
   //   path: "/",
   //   name: "Home",

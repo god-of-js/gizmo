@@ -22,4 +22,5 @@ interface Property {
   landmark: string;
   price: any;
 }
+
 export { User, Response, Data, Property };

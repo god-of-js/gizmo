@@ -1,4 +1,4 @@
-import addproperty from "@/views/dashboard/addproperty.vue";
+import addproperty from "@/views/dashboard/properties/addproperty.vue";
 import { mount } from "@vue/test-utils";
 import { expect } from "chai";
 import sinon from "sinon";
@@ -22,11 +22,11 @@ describe("addproperty", () => {
         loading: false
       };
     },
-    propsData: {clickHandler}
+    propsData: { clickHandler }
   });
 
   it("button should be disabled when all compulsory fields are not filled", async () => {
-      expect(wrapper.vm.$data.disabled).to.equal(true);
+    expect(wrapper.vm.$data.disabled).to.equal(true);
   });
   it("button should be abled when all compulsory fields are filled", async () => {
     await wrapper.setData({
@@ -39,9 +39,9 @@ describe("addproperty", () => {
         state: "enugu,nsukka",
         landmark: "unn",
         images: [1, 2, 3, 4],
-        price: 0,
+        price: 0
       }
-    })
-      expect(wrapper.vm.$data.disabled).to.equal(false);
+    });
+    expect(wrapper.vm.$data.disabled).to.equal(false);
   });
 });
