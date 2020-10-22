@@ -128,7 +128,7 @@ export default class AddProperty extends Vue {
     size: "",
     noOfRooms: "",
     extra: "",
-    location: "",
+    location: null,
     state: "",
     landmark: "",
     images: [],
@@ -147,7 +147,7 @@ export default class AddProperty extends Vue {
     if (
       value.state.length != 0 &&
       value.landmark.length != 0 &&
-      value.location.country.length != 0 &&
+      value.location &&
       value.price.length != 0 &&
       value.type.length != 0 &&
       value.size.length != 0
@@ -172,7 +172,6 @@ export default class AddProperty extends Vue {
     };
     filereader.readAsDataURL(e);
     this.imagesObj.push(e);
-    console.log(this.imagesObj);
     setTimeout(() => {
       //added the timeline due to error. it needed an async would be worked on subsequently.
       this.images.push(url); //adding it to the images arr for view.

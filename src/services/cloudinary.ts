@@ -1,7 +1,6 @@
 import axios from "axios";
 const upload = (formData: object) =>
   new Promise((resolve, reject) => {
-    console.log(process.env.VUE_APP_CLOUDINARY_UPLOAD_URL);
     axios
       .post(process.env.VUE_APP_CLOUDINARY_UPLOAD_URL, formData)
       .then(response => {
