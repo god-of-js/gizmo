@@ -1,4 +1,4 @@
-  <template>
+<template>
   <div class="mx-auto">
     <form @submit.prevent="createAccount">
       <v-text-field

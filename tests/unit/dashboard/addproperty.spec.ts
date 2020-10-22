@@ -5,7 +5,7 @@
 // describe("addproperty", () => {
 //   const clickHandler = sinon.stub();
 //   const wrapper = mount(addproperty, {
-//     data: () => {  
+//     data: () => {
 //       return {
 //         body: {
 //           type: "",
@@ -24,7 +24,7 @@
 //     },
 //     propsData: {clickHandler}
 //   });
-  
+
 //   it("button should be disabled when all compulsory fields are not filled", async () => {
 //       expect(wrapper.vm.$data.disabled).to.equal(true);
 //   });
@@ -45,7 +45,7 @@
 //       expect(wrapper.vm.$data.disabled).to.equal(false);
 //   });
 //   it("Check variables been passed in", async () => {
-    
+
 //     await wrapper.find(".add__button").trigger("click");
 //     // sinon.spy(addproperty.prototype, "addProperty");
 //     // expect(wrapper.vm.$data.disabled).to.equal(true);

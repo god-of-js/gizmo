@@ -16,13 +16,13 @@ export default {
   props: {
     label: String,
     isOutlined: Boolean,
-    value: String,
+    value: String
   },
   components: {
-    VueGoogleAutocomplete,
+    VueGoogleAutocomplete
   },
   data: () => ({
-    addr: " ",
+    addr: " "
   }),
   watch: {
     value(newState) {
@@ -30,7 +30,7 @@ export default {
     },
     addr(newState, oldState) {
       this.$emit("placesChange", vueApp.addr);
-    },
+    }
   },
   mounted() {
     this.$refs.address.focus();
@@ -47,12 +47,12 @@ export default {
     getAddressData: function(addressData, placeResultData, id) {
       this.addr = addressData;
       console.log(this.addr);
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
-.locations{
+.locations {
   width: 100%;
   outline: none;
   border: 1.5px solid rgba(0, 0, 0, 0.42);

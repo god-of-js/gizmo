@@ -30,7 +30,7 @@ export default class UserMod extends VuexModule {
   public setUserData(data: any) {
     gottenUser = data.value.data;
     this.jwt = data.value.jwt;
-    console.log(this.jwt)
+    console.log(this.jwt);
   }
   @Action
   public async getUserData(data: User) {
