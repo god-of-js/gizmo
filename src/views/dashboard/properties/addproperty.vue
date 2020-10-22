@@ -110,9 +110,9 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
-import { Property } from "../../utils/models";
+import { Property } from "@/utils/models";
 import { notify } from "@/utils/alert";
-import { upload } from "../../services/cloudinary";
+import { upload } from "@/services/cloudinary";
 import { Api } from "@/api";
 @Component({
   name: "Register",

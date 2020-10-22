@@ -7,7 +7,7 @@ const dashboardLayout: RouteConfig = {
   children: [
     {
       path: "/dashboard",
-      component: () => import("@/views/dashboard/dashboard.vue"),
+      component: () => import("@/views/dashboard/index/dashboard.vue"),
       name: "Dashboard",
       meta: {
         parent: "dashboard"
@@ -15,7 +15,7 @@ const dashboardLayout: RouteConfig = {
     },
     {
       path: "/add-property",
-      component: () => import("@/views/dashboard/addproperty.vue"),
+      component: () => import("@/views/dashboard/properties/addproperty.vue"),
       name: "Add Property",
       meta: {
         parent: "properties"
@@ -23,7 +23,7 @@ const dashboardLayout: RouteConfig = {
     },
     {
       path: "/my-properties",
-      component: () => import("@/views/dashboard/properties.vue"),
+      component: () => import("@/views/dashboard/properties/properties.vue"),
       name: "My Properties",
       meta: {
         parent: "properties"
