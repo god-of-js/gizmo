@@ -27,7 +27,7 @@ export default class Properties extends VuexModule {
       )
       .then(response => {
         this.setSellerProperties(response.data.data);
-        console.log(response.data.data);
+        console.log(response.data.data[1].createdAt.getMonth());
       })
       .catch(err => {
         console.log(err.response);

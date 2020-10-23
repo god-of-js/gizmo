@@ -14,8 +14,24 @@
             v-model="body.size"
           />
         </v-col>
-      </v-row>
-      <v-row class="pb-0">
+        <v-col sm="6" md="6" xsm="11" class="pb-0">
+          <cinput
+            :label="'Furnishing(e.g chairs or none)'"
+            v-model="body.furnishing"
+          />
+        </v-col>
+        <v-col sm="6" md="6" xsm="11" class="pb-0">
+          <cinput
+            :label="'Bathrooms(e.g 4 or none)'"
+            v-model="body.bathrooms"
+          />
+        </v-col>
+        <v-col sm="6" md="6" xsm="11" class="pb-0">
+          <cinput
+            :label="'Parking space(e.g 2 car parking space)'"
+            v-model="body.parkingSpace"
+          />
+        </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
           <cinput
             :label="'Number of Rooms Available'"
@@ -36,8 +52,13 @@
             :type="'number'"
           />
         </v-col>
-      </v-row>
-      <v-row class="pb-0">
+
+        <v-col sm="6" md="6" xsm="11" class="pb-0">
+          <locations
+            :label="'Enter Location of property(e.g Hill top avenue)'"
+            @placesChange="setPlace"
+          />
+        </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
           <cinput :label="'Local Government'" v-model="body.state" />
         </v-col>
@@ -47,16 +68,12 @@
             v-model="body.landmark"
           />
         </v-col>
-      </v-row>
-      <v-row class="pb-0">
         <v-col md="12" class="pb-0">
-          <locations
-            :label="'Enter Location of property(e.g Hill top avenue)'"
-            @placesChange="setPlace"
+          <cinput
+            :label="'Condition of property(e.g newly built e.t.c)'"
+            v-model="body.condition"
           />
         </v-col>
-      </v-row>
-      <v-row class="pb-0">
         <v-col class="pb-0">
           <cinput
             :label="
@@ -93,7 +110,7 @@
         <button
           :class="[
             disabled === true ? 'disabled__btn' : 'green__btn',
-            ' pb-3 pt-3 pl-16  pr-16 font__x__sm add__button'
+            ' pb-3 pt-3 pl-16  pr-16 font__x__sm add__button',
           ]"
           :disabled="disabled"
         >
@@ -119,8 +136,8 @@ import { Api } from "@/api";
   components: {
     locations: () => import("@/components/dashboard/locations.vue"),
     imgUpload: () => import("@/components/dashboard/imageupload.vue"),
-    imgViewer: () => import("@/components/dashboard/imgview.vue")
-  }
+    imgViewer: () => import("@/components/dashboard/imgview.vue"),
+  },
 })
 export default class AddProperty extends Vue {
   body: Property = {
@@ -133,7 +150,12 @@ export default class AddProperty extends Vue {
     landmark: "",
     images: [],
     ownerId: "",
-    price: ""
+    price: "",
+    furnishing: "",
+    bathrooms: "",
+    condition: "",
+    parkingSpace: ""
+
   };
   disabled = true;
   loading = false;
@@ -141,7 +163,7 @@ export default class AddProperty extends Vue {
   imagesObj: any[] = [];
   @Watch("body", {
     immediate: true,
-    deep: true
+    deep: true,
   })
   onPropertyChanged(value: Property) {
     if (
@@ -197,12 +219,12 @@ export default class AddProperty extends Vue {
     }
     Api()
       .post("/api/v1/property/add-property", this.body)
-      .then(result => {
+      .then((result) => {
         notify.success(result.data.message, "Success", "topRight");
         this.disabled = false;
         this.loading = false;
       })
-      .catch(err => {
+      .catch((err) => {
         notify.error(err.response.data.message, "Error", "topRight");
         this.disabled = false;
         this.loading = false;

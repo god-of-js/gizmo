@@ -15,15 +15,10 @@
         to="/add-property"
         v-if="$router.history.current.name === 'My Properties'"
       >
-        <button
-          class="border__radius yellow__btn font__x__sm pa-0 box__shadow pt-0 mr-12"
-        >
-          Add new property
-        </button>
+      <cbutton :text="'Add new property'" :pl="''" :pr="''" :mt="''" class="mr-12"/>
+       
       </router-link>
-      <v-avatar color="#FFBC44" size="45" class="font__sm">
-        <span class="white--text headline">HE</span>
-      </v-avatar>
+        <cavatar :initials="'HE'" :size="45"/>
     </div>
   </nav>
 </template>

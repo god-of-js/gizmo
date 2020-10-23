@@ -21,6 +21,10 @@ interface Property {
   state: string;
   landmark: string;
   price: any;
+  furnishing: string;
+  bathrooms: string;
+  condition: string;
+  parkingSpace: string
 }
 
 export { User, Response, Data, Property };

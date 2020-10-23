@@ -1,6 +1,5 @@
 <template>
-  <div class="ma-2 blue-upload-box">
-    <img :src="img" alt="" />
+  <div class="ma-2 blue-upload-box" :style="`background-image: url(${img})`">
   </div>
 </template>
 <script>
@@ -17,6 +16,7 @@ export default {
   border-radius: 8px;
   width: 60px;
   height: 60px;
+  background-size: cover;
 }
 img {
   width: 100%;
