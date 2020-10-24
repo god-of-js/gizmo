@@ -19,7 +19,7 @@
         <v-col class="d-flex align-center flex-column" cols="12" md="5" sm="12">
           <cavatar :initials="'HE'" :size="105" />
           <div>
-            <router-link to="/add-property">
+            <router-link :to="`/properties/edit-property/${property._id}`">
               <cbutton
                 :text="'Edit Property'"
                 :pl="'pl-3'"
@@ -27,14 +27,12 @@
                 class="mt-4"
               />
             </router-link>
-            <router-link to="/add-property">
               <cbutton
                 :text="'Delete Property'"
                 :pl="'pl-3'"
                 :pr="'pr-3'"
                 class="mt-4"
               />
-            </router-link>
           </div>
         </v-col>
       </v-row>
@@ -43,7 +41,7 @@
       <div class="font__purple pl-6 pb-3 font__bold font__xx__md pt-6">
         Property's details
       </div>
-      <v-row>
+      <v-row class="d-flex justify-space-between">
         <v-col cols="12" md="6" sm="12">
           <div class="pl-6 pb-3 font__bold font__xx__md">
             {{ $format(property.type ? property.type : " ") }}
@@ -119,7 +117,7 @@
             <v-col cols="12" sm="12" md="4" class="font__x__sm font__bold">
               <cavatar :size="45" :icon="'mdi-shower'" class="mx-auto" />
               <div class="text-center pt-3">
-                {{ property.bathrooms }} bedrooms
+                {{ property.bathrooms }} bathrooms
               </div>
             </v-col>
             <v-col cols="12" sm="12" md="4" class="font__x__sm font__bold">
@@ -127,12 +125,30 @@
               <div class="text-center pt-3">{{ property.parkingSpace }}</div>
             </v-col>
           </v-row>
-          <div class="details__container pa-4 mt-6 ml-4"> 
-                <div class="font__sm font__bold">More details </div>
-                <div class="font__sm">{{property.extraComment? property.extraComment: `At Segmed, we’re committed to revolutionizing healthcare research without personal information and improving global healthcare by enabling secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too!At Segmed, we’re committed to revolutionizing healthcare research without personal information and improving global healthcare by enabling secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too!At Segmed, we’re committed to revolutionizing healthcare research without personal information and improving global healthcare by enabling secure and easy data access. We see a future where medical AI helps people get a better standard of care no matter where they are in the world, and we hope you do, too!`}} </div>
+          <div class="details__container pa-4 mt-6 ml-4">
+            <div class="font__sm font__bold">Condition of property</div>
+            <div class="font__sm mt-3">
+              {{
+                property.condition
+                  ? property.condition
+                  : "No extra information was added about property"
+              }}
+            </div>
+          </div>
+          <div class="details__container pa-4 mt-6 ml-4">
+            <div class="font__sm font__bold">More details</div>
+            <div class="font__sm mt-3">
+              {{
+                property.extraComment
+                  ? property.extraComment
+                  : "No extra information was added about property"
+              }}
+            </div>
           </div>
         </v-col>
-        <v-col cols="12" md="6" sm="12"> </v-col>
+        <v-col cols="12" md="5" sm="12">
+        <propertyspecs :rooms="property.noOfRooms" :size="property.size" :furnitures="property.furnishing" :bathrooms="property.bathrooms"/>
+        </v-col>
       </v-row>
     </section>
   </div>
@@ -148,12 +164,12 @@ let id;
     viewImageBig: () => import("@/components/universal/imgview.vue"),
     viewImageNumber: () => import("@/components/universal/viewimgnumber.vue"),
     viewImageSmall: () => import("@/components/dashboard/imgview.vue"),
+    propertyspecs: () => import("@/components/dashboard/propertyspecs.vue"),
   },
 })
 export default class Properties extends Vue {
   properties = getModule(PropertiesModule, this.$store);
   mounted() {
-    // eslint-disable-next-line
     id = this.$router.history.current.params.id;
     this.properties.getProperty(id);
   }
@@ -166,8 +182,8 @@ export default class Properties extends Vue {
 }
 </script>
 <style>
-.details__container{
-    background-color: #EEEEEE;
-    border-radius: 5px;
+.details__container {
+  background-color: #eeeeee;
+  border-radius: 5px;
 }
 </style>

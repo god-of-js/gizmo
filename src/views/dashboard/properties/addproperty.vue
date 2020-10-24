@@ -3,37 +3,43 @@
     <form @submit.prevent="addProperty">
       <v-row class="pb-0">
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Property Type(e.g flat, land or duplex)'"
             v-model="body.type"
           />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Property Size(specify measuring unit)'"
             v-model="body.size"
           />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Furnishing(e.g chairs or none)'"
             v-model="body.furnishing"
           />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Bathrooms(e.g 4 or none)'"
             v-model="body.bathrooms"
           />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Parking space(e.g 2 car parking space)'"
             v-model="body.parkingSpace"
           />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Number of Rooms Available'"
             class="mb-0"
             v-model="body.noOfRooms"
@@ -46,7 +52,8 @@
           </div>
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Price of property'"
             v-model="body.price"
             :type="'number'"
@@ -60,22 +67,29 @@
           />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput :label="'Local Government'" v-model="body.state" />
+          <v-text-field
+            outlined
+            :label="'Local Government'"
+            v-model="body.state"
+          />
         </v-col>
         <v-col sm="6" md="6" xsm="11" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Closest Landmark(a very popular place)'"
             v-model="body.landmark"
           />
         </v-col>
         <v-col md="12" class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="'Condition of property(e.g newly built e.t.c)'"
             v-model="body.condition"
           />
         </v-col>
         <v-col class="pb-0">
-          <cinput
+          <v-text-field
+            outlined
             :label="
               'Extra Information about property: Indicate things like reason for the sale(optional)'
             "
@@ -154,8 +168,7 @@ export default class AddProperty extends Vue {
     furnishing: "",
     bathrooms: "",
     condition: "",
-    parkingSpace: ""
-
+    parkingSpace: "",
   };
   disabled = true;
   loading = false;
@@ -178,6 +191,9 @@ export default class AddProperty extends Vue {
     } else {
       this.disabled = true;
     }
+  }
+  mounted() {
+    console.log("")
   }
   public setPlace(e: object): void {
     this.body.location = e; //getting the location from google places api

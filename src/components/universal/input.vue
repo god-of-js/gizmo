@@ -1,7 +1,7 @@
 <template>
   <v-text-field
-    :label="label"
     outlined
+    :label="label"
     :type="type"
     v-on="$listeners"
   ></v-text-field>
