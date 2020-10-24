@@ -192,9 +192,6 @@ export default class AddProperty extends Vue {
       this.disabled = true;
     }
   }
-  mounted() {
-    console.log("")
-  }
   public setPlace(e: object): void {
     this.body.location = e; //getting the location from google places api
   }

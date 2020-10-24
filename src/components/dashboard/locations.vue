@@ -46,7 +46,6 @@ export default {
      */
     getAddressData: function(addressData, placeResultData, id) {
       this.addr = addressData;
-      console.log(this.addr);
     }
   }
 };

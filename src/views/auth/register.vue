@@ -74,7 +74,6 @@ export default class Register extends Vue {
     Api()
       .post("/api/v1/user/register", this.body)
       .then((response: Data) => {
-        console.log(response);
         this["user/setUserData"]({ value: response.data });
         notify.success(response.data.message, "Success", "topRight");
         this.$router.push("/dashboard");
@@ -83,7 +82,6 @@ export default class Register extends Vue {
         // );
       })
       .catch((err: Response) => {
-        console.log(err.response);
         notify.error(err.response.data.message, "Error", "topRight");
       });
     this.loaders(false);

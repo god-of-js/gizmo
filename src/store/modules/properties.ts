@@ -27,25 +27,20 @@ export default class Properties extends VuexModule {
       )
       .then(response => {
         this.setSellerProperties(response.data.data);
-        console.log(response.data.data[1].createdAt.getMonth());
       })
       .catch(err => {
-        console.log(err.response);
-        console.log(err);
+        throw err
       });
   }
   @Action
   getProperty(id: string) {
-    console.log(id);
     Api()
       .get("/api/v1/property/fetch-property/" + id)
       .then(response => {
         this.setSellerProperty(response.data.data);
-        console.log(response.data.data);
       })
       .catch(err => {
-        console.log(err.response);
-        console.log(err);
+        throw err
       });
   }
 }
