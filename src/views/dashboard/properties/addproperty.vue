@@ -124,7 +124,7 @@
         <button
           :class="[
             disabled === true ? 'disabled__btn' : 'green__btn',
-            ' pb-3 pt-3 pl-16  pr-16 font__x__sm add__button',
+            ' pb-3 pt-3 pl-16  pr-16 font__x__sm add__button'
           ]"
           :disabled="disabled"
         >
@@ -150,8 +150,8 @@ import { Api } from "@/api";
   components: {
     locations: () => import("@/components/dashboard/locations.vue"),
     imgUpload: () => import("@/components/dashboard/imageupload.vue"),
-    imgViewer: () => import("@/components/dashboard/imgview.vue"),
-  },
+    imgViewer: () => import("@/components/dashboard/imgview.vue")
+  }
 })
 export default class AddProperty extends Vue {
   body: Property = {
@@ -168,7 +168,7 @@ export default class AddProperty extends Vue {
     furnishing: "",
     bathrooms: "",
     condition: "",
-    parkingSpace: "",
+    parkingSpace: ""
   };
   disabled = true;
   loading = false;
@@ -176,7 +176,7 @@ export default class AddProperty extends Vue {
   imagesObj: any[] = [];
   @Watch("body", {
     immediate: true,
-    deep: true,
+    deep: true
   })
   onPropertyChanged(value: Property) {
     if (
@@ -232,12 +232,12 @@ export default class AddProperty extends Vue {
     }
     Api()
       .post("/api/v1/property/add-property", this.body)
-      .then((result) => {
+      .then(result => {
         notify.success(result.data.message, "Success", "topRight");
         this.disabled = false;
         this.loading = false;
       })
-      .catch((err) => {
+      .catch(err => {
         notify.error(err.response.data.message, "Error", "topRight");
         this.disabled = false;
         this.loading = false;

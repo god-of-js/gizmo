@@ -27,12 +27,12 @@
                 class="mt-4"
               />
             </router-link>
-              <cbutton
-                :text="'Delete Property'"
-                :pl="'pl-3'"
-                :pr="'pr-3'"
-                class="mt-4"
-              />
+            <cbutton
+              :text="'Delete Property'"
+              :pl="'pl-3'"
+              :pr="'pr-3'"
+              class="mt-4"
+            />
           </div>
         </v-col>
       </v-row>
@@ -147,7 +147,12 @@
           </div>
         </v-col>
         <v-col cols="12" md="5" sm="12">
-        <propertyspecs :rooms="property.noOfRooms" :size="property.size" :furnitures="property.furnishing" :bathrooms="property.bathrooms"/>
+          <propertyspecs
+            :rooms="property.noOfRooms"
+            :size="property.size"
+            :furnitures="property.furnishing"
+            :bathrooms="property.bathrooms"
+          />
         </v-col>
       </v-row>
     </section>
@@ -164,13 +169,13 @@ let id;
     viewImageBig: () => import("@/components/universal/imgview.vue"),
     viewImageNumber: () => import("@/components/universal/viewimgnumber.vue"),
     viewImageSmall: () => import("@/components/dashboard/imgview.vue"),
-    propertyspecs: () => import("@/components/dashboard/propertyspecs.vue"),
-  },
+    propertyspecs: () => import("@/components/dashboard/propertyspecs.vue")
+  }
 })
 export default class Properties extends Vue {
   properties = getModule(PropertiesModule, this.$store);
   mounted() {
-    id = this.$router.history.current.params.id;
+    id = this.$route.params.id;
     this.properties.getProperty(id);
   }
   get months() {

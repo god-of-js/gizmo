@@ -1,7 +1,7 @@
 <template>
   <div class="ma-2 blue-upload-box d-flex align-center">
-  <v-icon color=white>mdi-plus </v-icon>
-  {{number}}
+    <v-icon color="white">mdi-plus </v-icon>
+    {{ number }}
   </div>
 </template>
 <script>
@@ -10,7 +10,7 @@ import { notify } from "@/utils/alert";
 export default {
   name: "Image-Upload",
   props: {
-      number: Number
+    number: Number
   }
 };
 </script>

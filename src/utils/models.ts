@@ -24,7 +24,7 @@ interface Property {
   furnishing: string;
   bathrooms: string;
   condition: string;
-  parkingSpace: string
+  parkingSpace: string;
 }
 
 export { User, Response, Data, Property };

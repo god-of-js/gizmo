@@ -1,6 +1,10 @@
 <template>
   <button
-    :class="`border__radius yellow__btn font__x__sm ${pr ? pr : ''} ${pl ? pl: ''} box__shadow pt-0`"
+    :class="
+      `border__radius yellow__btn font__x__sm ${pr ? pr : ''} ${
+        pl ? pl : ''
+      } box__shadow pt-0`
+    "
   >
     {{ text }}
   </button>
@@ -11,6 +15,6 @@ export default {
     text: String,
     pr: String,
     pl: String
-  },
+  }
 };
 </script>

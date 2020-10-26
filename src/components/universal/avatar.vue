@@ -1,13 +1,9 @@
-<template> 
-<v-avatar
-          color="#FFBC44"
-          :size="size"
-          class="font__sm d-flex justify-center"
-        >
-          <img v-if="false" />
-          <span class="white--text headline" v-if="!icon">HE</span>
-          <v-icon color="#000000" v-if="icon"> {{icon}} </v-icon>
-        </v-avatar>
+<template>
+  <v-avatar color="#FFBC44" :size="size" class="font__sm d-flex justify-center">
+    <img v-if="false" />
+    <span class="white--text headline" v-if="!icon">HE</span>
+    <v-icon color="#000000" v-if="icon"> {{ icon }} </v-icon>
+  </v-avatar>
 </template>
 
 <script lang="ts">

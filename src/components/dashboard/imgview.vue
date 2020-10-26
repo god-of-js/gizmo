@@ -1,6 +1,8 @@
 <template>
-  <div class="ma-2 blue-upload-box" :style="`background-image: url(${img})`">
-  </div>
+  <div
+    class="ma-2 blue-upload-box"
+    :style="`background-image: url(${img})`"
+  ></div>
 </template>
 <script>
 export default {

@@ -16,7 +16,11 @@
         <v-col>{{ index + 1 }}</v-col>
         <v-col>{{ property.type }}</v-col>
         <v-col class="date">{{
-          property.createdAt ? `${new Date(property.createdAt).getDay()} ${months[new Date(property.createdAt).getMonth()]} ${new Date(property.createdAt).getFullYear()}`  : "03 Mar 2020"
+          property.createdAt
+            ? `${new Date(property.createdAt).getDay()} ${
+                months[new Date(property.createdAt).getMonth()]
+              } ${new Date(property.createdAt).getFullYear()}`
+            : "03 Mar 2020"
         }}</v-col>
         <v-col>
           <span class="mr-1"

@@ -15,7 +15,7 @@ import {
 class App extends VuexModule {
   appName = "Gizmo";
   months = [
-    "January", 
+    "January",
     "February",
     "March",
     "April",
@@ -26,7 +26,7 @@ class App extends VuexModule {
     "September",
     "October",
     "November",
-    "December",
+    "December"
   ];
 }
 

@@ -5,8 +5,8 @@
 export default {
   name: "Image-view",
   props: {
-    img: String,
-  },
+    img: String
+  }
 };
 </script>
 <style>

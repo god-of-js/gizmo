@@ -29,7 +29,7 @@ export default class Properties extends VuexModule {
         this.setSellerProperties(response.data.data);
       })
       .catch(err => {
-        throw err
+        throw err;
       });
   }
   @Action
@@ -40,7 +40,7 @@ export default class Properties extends VuexModule {
         this.setSellerProperty(response.data.data);
       })
       .catch(err => {
-        throw err
+        throw err;
       });
   }
 }

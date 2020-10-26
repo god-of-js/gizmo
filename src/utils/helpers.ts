@@ -1,4 +1,4 @@
- const imgCheck = (file: any): boolean => {
+const imgCheck = (file: any): boolean => {
   if (file.type !== "image/jpeg" && file.type !== "image/png") {
     return false;
   } else {
@@ -13,7 +13,4 @@ const format = (str: any) => {
   }
   return str.join(" ");
 };
-export {
-  format,
-  imgCheck
-}
+export { format, imgCheck };
