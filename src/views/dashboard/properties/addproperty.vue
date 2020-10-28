@@ -145,6 +145,9 @@ import { Property } from "@/utils/models";
 import { notify } from "@/utils/alert";
 import { upload } from "@/services/cloudinary";
 import { Api } from "@/api";
+import PropertiesModule from "@/store/modules/properties";
+import { getModule } from "vuex-module-decorators";
+let id;
 @Component({
   name: "Register",
   components: {
@@ -154,6 +157,7 @@ import { Api } from "@/api";
   }
 })
 export default class AddProperty extends Vue {
+  properties = getModule(PropertiesModule, this.$store);
   body: Property = {
     type: "",
     size: "",
@@ -190,6 +194,12 @@ export default class AddProperty extends Vue {
       this.disabled = false;
     } else {
       this.disabled = true;
+    }
+  }
+  mounted() {
+    id = this.$route.params.id
+    if(this.$route.params.id) {
+    this.properties.getProperty(id);
     }
   }
   public setPlace(e: object): void {

@@ -24,7 +24,7 @@ const dashboardLayout: RouteConfig = {
     },
     {
       path: "/properties/edit-property/:id",
-      component: () => import("@/views/dashboard/properties/editproperty.vue"),
+      component: () => import("@/views/dashboard/properties/addproperty.vue"),
       name: "Edit Property",
       meta: {
         parent: "properties",
