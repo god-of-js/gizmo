@@ -2,7 +2,7 @@
   <div class="pa-9">
     <form @submit.prevent="addProperty">
       <v-row class="pb-0">
-        <v-col sm="6" md="6" xsm="11" class="pb-0">
+        <v-col sm="12" md="6" xsm="11" class="pb-0 mx-auto">
           <v-text-field
             outlined
             :label="'Property Type(e.g flat, land or duplex)'"
@@ -94,13 +94,13 @@
               'Extra Information about property: Indicate things like reason for the sale(optional)'
             "
             class="mb-0"
-            v-model="body.extra"
+            v-model="body.extraComment"
           />
         </v-col>
       </v-row>
       <div class="font__ash pb-3">Upload Images of property</div>
       <v-row>
-        <imgUpload @imageAdd="addImage" v-if="images.length < 5" />
+        <imgUpload @imageAdd="addImage" />
         <div
           style="position: relative;"
           v-for="(image, index) in images"
@@ -162,7 +162,7 @@ export default class AddProperty extends Vue {
     type: "",
     size: "",
     noOfRooms: "",
-    extra: "",
+    extraComment: "",
     location: null,
     state: "",
     landmark: "",
@@ -172,34 +172,62 @@ export default class AddProperty extends Vue {
     furnishing: "",
     bathrooms: "",
     condition: "",
-    parkingSpace: ""
+    parkingSpace: "",
+    propertyId: ""
   };
   disabled = true;
   loading = false;
   images: string[] = [];
   imagesObj: any[] = [];
+  get property() {
+    return this.$store.state.properties.property;
+  }
   @Watch("body", {
     immediate: true,
     deep: true
   })
   onPropertyChanged(value: Property) {
     if (
-      value.state.length != 0 &&
-      value.landmark.length != 0 &&
+      value.state &&
+      value.landmark &&
       value.location &&
-      value.price.length != 0 &&
-      value.type.length != 0 &&
-      value.size.length != 0
+      value.price &&
+      value.type &&
+      value.size
     ) {
       this.disabled = false;
     } else {
       this.disabled = true;
     }
   }
+  @Watch("property", {
+    immediate: true,
+    deep: true
+  })
+  watchState(value: Property) {
+    if (value.type) {
+      this.body.type = value.type;
+      this.body.size = value.size;
+      this.body.noOfRooms = value.noOfRooms;
+      this.body.condition = value.condition;
+      this.body.furnishing = value.furnishing;
+      this.body.ownerId = value.ownerId;
+      this.body.price = value.price;
+      this.body.parkingSpace = value.parkingSpace;
+      this.body.bathrooms = value.bathrooms;
+      this.body.landmark = value.landmark;
+      this.body.state = value.state;
+      console.log(value.location)
+      this.body.location = value.location;
+      this.body.extraComment = value.extraComment;
+      this.imagesObj.push(...value.images);
+      this.images.push(...value.images);
+    }
+  }
   mounted() {
-    id = this.$route.params.id
-    if(this.$route.params.id) {
-    this.properties.getProperty(id);
+    id = this.$route.params.id;
+    if (this.$route.params.id) {
+      this.properties.getProperty(id);
     }
   }
   public setPlace(e: object): void {
@@ -216,8 +244,8 @@ export default class AddProperty extends Vue {
       url = evt.target.result; //sending the link to url
     };
     filereader.readAsDataURL(e);
-    this.imagesObj.push(e);
     setTimeout(() => {
+      this.imagesObj.push(e);
       //added the timeline due to error. it needed an async would be worked on subsequently.
       this.images.push(url); //adding it to the images arr for view.
     }, 100);
@@ -227,19 +255,23 @@ export default class AddProperty extends Vue {
       notify.error("at least one image must be provided", "Error", "topRight");
       return "err";
     }
-    this.disabled = true;
     this.loading = true;
     this.body.ownerId = this.$store.state.user.user._id;
     this.body.price = Number(this.body.price);
     this.body.noOfRooms = Number(this.body.noOfRooms);
-
+    if (this.$route.params.id) this.body.propertyId = this.$route.params.id;
     for (let i = 0; i < this.imagesObj.length; i++) {
       const formData = new FormData();
-      formData.append(`file`, this.imagesObj[i]);
-      formData.append("upload_preset", "xbcrtnu5");
-      const url = await upload(formData);
+      let url;
+      if (typeof this.imagesObj[i] === "string") url = this.imagesObj[i];
+      else {
+        formData.append(`file`, this.imagesObj[i]);
+        formData.append("upload_preset", "xbcrtnu5");
+        url = await upload(formData);
+      }
       this.body.images.push(url);
     }
+    console.log(this.body.extraComment, "body images");
     Api()
       .post("/api/v1/property/add-property", this.body)
       .then(result => {

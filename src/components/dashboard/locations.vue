@@ -1,61 +1,57 @@
 <template>
-  <vue-google-autocomplete
-    ref="address"
-    id="map"
-    classname="locations"
-    placeholder="Please type your address"
-    v-on:placechanged="getAddressData"
-    country="ng"
-  >
-  </vue-google-autocomplete>
+<v-text-field
+    :label="label"
+    ref="googleplaces"
+    v-model="addr"
+    :outlined="true"
+    type="text"
+  />
 </template>
 <script>
-let vueApp;
-import VueGoogleAutocomplete from "vue-google-autocomplete";
+let vueApp
 export default {
   props: {
     label: String,
     isOutlined: Boolean,
     value: String
   },
-  components: {
-    VueGoogleAutocomplete
-  },
   data: () => ({
-    addr: " "
+      lon: "",
+      lat: "",
+      addr: " "
   }),
   watch: {
-    value(newState) {
-      this.addr = newState;
+    value(newState){
+      console.log(newState)
+      this.addr = newState
+    },
+    lon(newState, oldState) {
+      this.$emit("placesChange", {lon: newState, lat: vueApp.lat, addr: vueApp.addr});
     },
     addr(newState, oldState) {
-      this.$emit("placesChange", vueApp.addr);
+      this.$emit("placesChange", {lon: vueApp.lon, lat: vueApp.lat, addr: newState});
+    },
+    lat(newState, oldState) {
+      this.$emit("placesChange", {lon: vueApp.lon, lat: newState, addr: vueApp.addr});
     }
   },
   mounted() {
-    this.$refs.address.focus();
     vueApp = this;
-    this.addr = this.value;
-  },
-  methods: {
-    /**
-     * When the location found
-     * @param {Object} addressData Data of the found location
-     * @param {Object} placeResultData PlaceResult object
-     * @param {String} id Input container ID
-     */
-    getAddressData: function(addressData, placeResultData, id) {
-      this.addr = addressData;
-    }
+    this.addr = this.value
+    //eslint-disable-next-line
+    this.autocomplete = new google.maps.places.Autocomplete(
+      this.$refs.googleplaces.$refs.input,
+      { types: ["geocode"] }
+    );
+    this.autocomplete.addListener("place_changed", () => {
+      const place = this.autocomplete.getPlace();
+      const address = place.formatted_address;
+      const lat = place.geometry.location.lat();
+      const lon = place.geometry.location.lng();
+      this.addr = address;
+      this.lon = lon;
+      this.lat = lat;
+    });
   }
 };
 </script>
-<style>
-.locations {
-  width: 100%;
-  outline: none;
-  border: 1.5px solid rgba(0, 0, 0, 0.42);
-  padding: 10px;
-  border-radius: 6px;
-}
-</style>

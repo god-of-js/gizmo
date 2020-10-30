@@ -14,7 +14,7 @@ interface Property {
   type: string;
   size: string;
   noOfRooms?: any;
-  extra: string;
+  extraComment: string;
   location: any;
   images: any[];
   ownerId: string;
@@ -25,6 +25,7 @@ interface Property {
   bathrooms: string;
   condition: string;
   parkingSpace: string;
+  propertyId: string;
 }
 
 export { User, Response, Data, Property };
