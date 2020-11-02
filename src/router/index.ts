@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-// import Home from "../views/Home.vue";
 import dashboardLayout from "./modules/dashboard";
+import HomeLayout from "./modules/home";
 import AuthServicesLayout from "./modules/authservices";
 
 Vue.use(VueRouter);
@@ -10,26 +10,17 @@ const routes: RouteConfig[] = [
     path: "*",
     redirect: "/"
   },
+  HomeLayout,
   dashboardLayout,
   AuthServicesLayout,
   {
-    path: "/",
+    path: "/authentication",
     name: "auth",
     component: () => import("../layouts/auth.vue")
   },
   { path: "/properties/view-property/*" },
   { path: "/properties/edit-property/*" },
-  // {
-  //   path: "/",
-  //   name: "Home",
-  //   component: Home
-  // },
-  {
-    path: "/about",
-    name: "About",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
+  
 ];
 
 const router = new VueRouter({

@@ -149,7 +149,7 @@ import PropertiesModule from "@/store/modules/properties";
 import { getModule } from "vuex-module-decorators";
 let id;
 @Component({
-  name: "Register",
+  name: "Add Property",
   components: {
     locations: () => import("@/components/dashboard/locations.vue"),
     imgUpload: () => import("@/components/dashboard/imageupload.vue"),

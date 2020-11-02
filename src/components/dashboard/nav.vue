@@ -13,6 +13,7 @@
     <div class="d-flex align-center">
       <router-link
         to="/add-property"
+          class="mr-12"
         v-if="$router.history.current.name === 'My Properties'"
       >
         <cbutton
@@ -20,7 +21,6 @@
           :pl="''"
           :pr="''"
           :mt="''"
-          class="mr-12"
         />
       </router-link>
       <cavatar :initials="'HE'" :size="45" />
@@ -31,9 +31,9 @@
 import { Component, Vue } from "vue-property-decorator";
 // import {AxiosResponse} from "axios"
 @Component({
-  name: "nav"
+  name: "DashboardNavBar"
 })
-export default class Properties extends Vue {
+export default class DashboardNavBar extends Vue {
   goBack() {
     window.history.back();
   }
