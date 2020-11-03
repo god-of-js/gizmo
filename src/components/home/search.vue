@@ -22,9 +22,10 @@ import { Component, Vue } from "vue-property-decorator";
   },
 })
 export default class SearchComponent extends Vue {
-  //   public setPlace(e: object): void {
-  //     this.body.location = e; //getting the location from google places api
-  //   }
+  location = {}
+    public setPlace(e: object): void {
+      this.location = e; //getting the location from google places api
+    }
 }
 </script>
 <style lang="scss">

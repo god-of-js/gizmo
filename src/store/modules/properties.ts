@@ -10,6 +10,7 @@ import { Property } from "@/utils/models";
 export default class Properties extends VuexModule {
   sellerProperties: Property[] = [];
   property: Property[] = [];
+  universalProperty: Property[] = [];
   @Mutation
   setSellerProperties(data: Property[]) {
     this.sellerProperties = data;
@@ -17,6 +18,10 @@ export default class Properties extends VuexModule {
   @Mutation
   setSellerProperty(data: Property[]) {
     this.property = data;
+  }
+  @Mutation
+  setUniversalProperties(data: Property[]) {
+    this.universalProperty = data;
   }
   @Action
   getSellerProperties() {
@@ -27,6 +32,20 @@ export default class Properties extends VuexModule {
       )
       .then(response => {
         this.setSellerProperties(response.data.data);
+      })
+      .catch(err => {
+        throw err;
+      });
+  }
+  @Action
+  getAllProperties() {
+    Api()
+      .get(
+        "/api/v1/property/fetch-all-properties/0"
+      )
+      .then(response => {
+        console.log(response)
+        this.setUniversalProperties(response.data.data);
       })
       .catch(err => {
         throw err;

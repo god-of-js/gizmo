@@ -271,7 +271,7 @@ export default class AddProperty extends Vue {
       }
       this.body.images.push(url);
     }
-    console.log(this.body.extraComment, "body images");
+    console.log(this.body, "body images");
     Api()
       .post("/api/v1/property/add-property", this.body)
       .then(result => {
