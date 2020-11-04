@@ -32,6 +32,7 @@
               :pl="'pl-3'"
               :pr="'pr-3'"
               class="mt-4"
+              @click="delProperty"
             />
           </div>
         </v-col>
@@ -162,15 +163,20 @@
 import { Component, Vue } from "vue-property-decorator";
 import PropertiesModule from "@/store/modules/properties";
 import { getModule } from "vuex-module-decorators";
-let id;
+import { getToken } from "@/utils/cookies";
+import { notify } from "@/utils/alert";
+const token = getToken();
+
+import axios from "axios";
+let id: string;
 @Component({
   name: "Properties",
   components: {
     viewImageBig: () => import("@/components/universal/imgview.vue"),
     viewImageNumber: () => import("@/components/universal/viewimgnumber.vue"),
     viewImageSmall: () => import("@/components/dashboard/imgview.vue"),
-    propertyspecs: () => import("@/components/dashboard/propertyspecs.vue")
-  }
+    propertyspecs: () => import("@/components/dashboard/propertyspecs.vue"),
+  },
 })
 export default class Properties extends Vue {
   properties = getModule(PropertiesModule, this.$store);
@@ -183,6 +189,28 @@ export default class Properties extends Vue {
   }
   get property() {
     return this.$store.state.properties.property;
+  }
+  delProperty(): void {
+    const data = {
+      ownerId: this.$store.state.user.user._id,
+      propId: id,
+    };
+    axios
+      .delete(`${process.env.VUE_APP_API_URL}/api/v1/property/delete-property`, {
+        data,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        this.$router.push("/my-properties")
+        notify.success(response.data.message, "Success", "topRight");
+        console.log(response);
+      })
+      .catch((err) => {
+        notify.error(err.response.data.message, "Error", "topRight");
+        console.log(err.response);
+      });
   }
 }
 </script>

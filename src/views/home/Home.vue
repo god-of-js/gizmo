@@ -6,7 +6,7 @@
     <section class="d-flex mt-n7 justify-center">
       <search />
     </section>
-    <v-row class="pa-5 d-flex justify-center"> 
+    <v-row class="pa-5 pl-14 pr-14"> 
       <v-col v-for="(property, index) in universalProperty" :key="index" md="3"> 
         <property  :property="property"/>
       </v-col>

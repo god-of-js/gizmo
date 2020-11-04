@@ -17,7 +17,7 @@ export default class DashboardCard extends Vue {
 </script>
 <style> 
 .property__card{
-    width: 300px;
+    width: 280px;
     height: 300px;
     border: 1px solid #f1f1f1;
     border-radius: 5px;

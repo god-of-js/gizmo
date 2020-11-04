@@ -1,57 +1,40 @@
 <template>
-<v-text-field
-    :label="label"
-    ref="googleplaces"
-    v-model="addr"
-    :outlined="true"
-    type="text"
-  />
+  <vue-google-autocomplete
+    id="map"
+    classname="form-control"
+    :placeholder="label"
+    v-on:placechanged="getAddressData"
+  >
+  </vue-google-autocomplete>
 </template>
 <script>
-let vueApp
+let vueApp;
+import VueGoogleAutocomplete from "vue-google-autocomplete";
 export default {
   props: {
     label: String,
     isOutlined: Boolean,
-    value: String
+    value: String,
   },
-  data: () => ({
-      lon: "",
-      lat: "",
-      addr: " "
-  }),
-  watch: {
-    value(newState){
-      console.log(newState)
-      this.addr = newState
-    },
-    lon(newState, oldState) {
-      this.$emit("placesChange", {lon: newState, lat: vueApp.lat, addr: vueApp.addr});
-    },
-    addr(newState, oldState) {
-      this.$emit("placesChange", {lon: vueApp.lon, lat: vueApp.lat, addr: newState});
-    },
-    lat(newState, oldState) {
-      this.$emit("placesChange", {lon: vueApp.lon, lat: newState, addr: vueApp.addr});
-    }
-  },
+  components: { VueGoogleAutocomplete },
   mounted() {
     vueApp = this;
-    this.addr = this.value
+    this.addr = this.value;
     //eslint-disable-next-line
-    this.autocomplete = new google.maps.places.Autocomplete(
-      this.$refs.googleplaces.$refs.input,
-      { types: ["geocode"] }
-    );
-    this.autocomplete.addListener("place_changed", () => {
-      const place = this.autocomplete.getPlace();
-      const address = place.formatted_address;
-      const lat = place.geometry.location.lat();
-      const lon = place.geometry.location.lng();
-      this.addr = address;
-      this.lon = lon;
-      this.lat = lat;
-    });
-  }
+  },
+  methods: {
+    getAddressData: function(addressData, placeResultData, id) {
+      this.$emit("placesChange", addressData);
+    },
+  },
 };
 </script>
+<style>
+#map {
+  width: 100%;
+  height: 46px;
+  padding-left: 12px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.87);
+}
+</style>

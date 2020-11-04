@@ -5,6 +5,7 @@
         pl ? pl : ''
       } box__shadow pt-0`
     "
+    v-on="$listeners"
   >
     {{ text }}
   </button>

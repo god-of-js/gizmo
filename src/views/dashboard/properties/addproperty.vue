@@ -149,7 +149,7 @@ import PropertiesModule from "@/store/modules/properties";
 import { getModule } from "vuex-module-decorators";
 let id;
 @Component({
-  name: "Add Property",
+  name: "Add-Property",
   components: {
     locations: () => import("@/components/dashboard/locations.vue"),
     imgUpload: () => import("@/components/dashboard/imageupload.vue"),
@@ -205,7 +205,8 @@ export default class AddProperty extends Vue {
     deep: true
   })
   watchState(value: Property) {
-    if (value.type) {
+    console.log(this.$route.params.id)
+    if (value.type && this.$route.params.id) {
       this.body.type = value.type;
       this.body.size = value.size;
       this.body.noOfRooms = value.noOfRooms;
@@ -217,7 +218,6 @@ export default class AddProperty extends Vue {
       this.body.bathrooms = value.bathrooms;
       this.body.landmark = value.landmark;
       this.body.state = value.state;
-      console.log(value.location)
       this.body.location = value.location;
       this.body.extraComment = value.extraComment;
       this.imagesObj.push(...value.images);
@@ -226,9 +226,10 @@ export default class AddProperty extends Vue {
   }
   mounted() {
     id = this.$route.params.id;
+    console.log(this.$route.params.id)
     if (this.$route.params.id) {
       this.properties.getProperty(id);
-    }
+    } 
   }
   public setPlace(e: object): void {
     this.body.location = e; //getting the location from google places api
