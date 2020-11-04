@@ -1,6 +1,13 @@
 <template>
-  <nav class="d-flex pt-4 pl-6 pr-6 justify-space-between align-center">
+  <nav class="d-flex pt-4 pl-6 pr-6 pb-2 justify-space-between align-center">
     <div class="font__sm font__white font__bold d-flex align-center">
+      <button
+        v-if="$route.meta.child"
+        class="mr-2"
+        @click="goBack"
+      >
+        <v-icon color="#ffffff">mdi-arrow-left</v-icon>
+      </button>
       <span> {{ appName }}</span>
     </div>
     <div class="d-flex align-center">
@@ -38,12 +45,16 @@ export default class HomeNavBar extends Vue {
   get appName() {
       return this.$store.state.app.appName
   }
+  goBack() {
+    window.history.back();
+  }
 }
 </script>
 <style lang="scss" scoped>
 nav {
   width: 100%;
   z-index: 5;
+  background-color: #1c528a;
   position: fixed;
 }
 .yellow__btn {

@@ -1,5 +1,5 @@
 <template>
-  <div class="pa-4">
+  <div  :class="[$route.meta.parent === 'Home'? 'mt-16 pt-6' : '', 'pa-4']">
     <section>
       <div class="font__purple pl-6 pb-3 font__bold font__xx__md">
         {{ $format(property.type ? property.type : " ") }} for sale
@@ -18,7 +18,7 @@
         </v-col>
         <v-col class="d-flex align-center flex-column" cols="12" md="5" sm="12">
           <cavatar :initials="'HE'" :size="105" />
-          <div>
+          <div v-if="$route.meta.parent !== 'Home'">
             <router-link :to="`/properties/edit-property/${property._id}`">
               <cbutton
                 :text="'Edit Property'"
@@ -33,6 +33,22 @@
               :pr="'pr-3'"
               class="mt-4"
               @click="delProperty"
+            />
+          </div>
+          <div v-else>
+            <router-link :to="`/home/view-property-owner/${property.ownerId}`">
+              <cbutton
+                :text="'View owner\'s contact details'"
+                :pl="''"
+                :pr="''"
+                class="mt-4"
+              />
+            </router-link>
+            <cbutton
+              :text="'View other properties'"
+              :pl="''"
+              :pr="''"
+              class="mt-4"
             />
           </div>
         </v-col>

@@ -1,7 +1,9 @@
 <template> 
     <div> 
         <navbar />
+      <transition name="slide-left" mode="out-in">
         <router-view />
+      </transition>
     </div>
 </template>
 <script lang="ts">

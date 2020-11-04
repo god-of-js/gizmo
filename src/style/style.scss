@@ -16,6 +16,9 @@ $blue: #1C528A;
 .yellow__btn:active{
     transform: scale(1.09, 1.06);
 }
+.active:active{
+    transform: scale(1.03, 1.04);
+}
  .yellow__btn:hover {
     background-color: #fbb034;
     background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
