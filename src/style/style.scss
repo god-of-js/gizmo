@@ -16,6 +16,9 @@ $blue: #1C528A;
 .yellow__btn:active{
     transform: scale(1.09, 1.06);
 }
+button{
+    outline: none;
+}
 .active:active{
     transform: scale(1.03, 1.04);
 }

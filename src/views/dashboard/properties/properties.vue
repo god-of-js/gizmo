@@ -52,7 +52,6 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-// import {AxiosResponse} from "axios"
 import PropertiesModule from "@/store/modules/properties";
 import { getModule } from "vuex-module-decorators";
 @Component({

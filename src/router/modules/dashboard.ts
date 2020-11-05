@@ -14,6 +14,14 @@ const dashboardLayout: RouteConfig = {
       }
     },
     {
+      path: "/settings",
+      component: () => import("@/views/dashboard/settings/settings.vue"),
+      name: "Settings",
+      meta: {
+        parent: "settings"
+      }
+    },
+    {
       path: "/add-property",
       component: () => import("@/views/dashboard/properties/addproperty.vue"),
       name: "Add Property",

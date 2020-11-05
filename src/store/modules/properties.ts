@@ -11,6 +11,7 @@ export default class Properties extends VuexModule {
   sellerProperties: Property[] = [];
   property: Property[] = [];
   universalProperty: Property[] = [];
+  propertyOwner: object = {}
   @Mutation
   setSellerProperties(data: Property[]) {
     this.sellerProperties = data;
@@ -21,18 +22,18 @@ export default class Properties extends VuexModule {
   }
   @Mutation
   setOwner(data: Property[]) {
-    this.property = data;
+    this.propertyOwner = data;
   }
   @Mutation
   setUniversalProperties(data: Property[]) {
     this.universalProperty = data;
   }
   @Action
-  getSellerProperties() {
+  getSellerProperties(id: string ) {
     Api()
       .get(
         "/api/v1/property/fetch-properties",
-        this.context.rootState.user.user._id
+        !id? this.context.rootState.user.user._id : id
       )
       .then(response => {
         this.setSellerProperties(response.data.data);

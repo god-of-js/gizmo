@@ -14,7 +14,7 @@
               $router.history.current.meta.parent === route.signal
                 ? 'upper__circle '
                 : '',
-              'mt-8'
+              'mt-6'
             ]"
           ></div>
           <div
@@ -31,7 +31,8 @@
                   ? '#FFBC44'
                   : 'white'
               "
-              class="mr-4 font__sm icon"
+              style="font-size: 1.2em;"
+              class="mr-4  icon"
               >{{ route.icon }}</v-icon
             >
             <span class="font__x__sm">{{ route.name }}</span>
@@ -73,16 +74,10 @@ export default class Sidebar extends Vue {
       signal: "properties"
     },
     {
-      path: "/dashboard",
+      path: "/settings",
       icon: "mdi-cog",
       name: "Settings",
-      signal: ""
-    },
-    {
-      path: "/dashboard",
-      icon: "mdi-message",
-      name: "Messages",
-      signal: ""
+      signal: "settings"
     },
     {
       path: "/",
