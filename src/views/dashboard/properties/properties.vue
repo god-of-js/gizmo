@@ -60,7 +60,7 @@ import { getModule } from "vuex-module-decorators";
 export default class Properties extends Vue {
   properties = getModule(PropertiesModule, this.$store);
   mounted() {
-    this.properties.getSellerProperties();
+    this.properties.getSellerProperties(this.$store.state.user.user._id);
   }
   get sellerProperties() {
     return this.$store.state.properties.sellerProperties;

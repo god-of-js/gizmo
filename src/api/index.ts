@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getToken } from "@/utils/cookies";
-const token = getToken();
+const token = getToken()? getToken() : "";
 export const Api = () =>
   axios.create({
     baseURL: process.env.VUE_APP_API_URL,

@@ -6,17 +6,9 @@
         style="list-style-type: none;"
         v-for="(route, index) in routes"
         :key="index"
-        class="mt-4"
+        class="mt-6"
       >
         <router-link :to="route.path" class="no__link white__text">
-          <div
-            :class="[
-              $router.history.current.meta.parent === route.signal
-                ? 'upper__circle '
-                : '',
-              'mt-6'
-            ]"
-          ></div>
           <div
             :class="[
               $router.history.current.meta.parent === route.signal
@@ -37,14 +29,27 @@
             >
             <span class="font__x__sm">{{ route.name }}</span>
           </div>
+        </router-link>
+      </li>
+      <li
+        style="list-style-type: none;cursor: pointer"
+        class="mt-4"
+        @click="logOut"
+      >
           <div
             :class="[
-              $router.history.current.meta.parent === route.signal
-                ? 'lower__circle '
-                : ''
+              routeStyle
             ]"
-          ></div>
-        </router-link>
+          >
+            <v-icon
+              :color="'white'
+              "
+              style="font-size: 1.2em;"
+              class="mr-4  icon"
+              >mdi-power</v-icon
+            >
+            <span class="font__x__sm">Log Out</span>
+          </div>
       </li>
     </ul>
   </nav>
@@ -53,6 +58,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import App from "@/store/modules/app";
 import { getModule } from "vuex-module-decorators";
+import {setToken, setProfile,getToken} from "@/utils/cookies"
 @Component({
   name: "Sidebar",
   components: {}
@@ -78,16 +84,16 @@ export default class Sidebar extends Vue {
       icon: "mdi-cog",
       name: "Settings",
       signal: "settings"
-    },
-    {
-      path: "/",
-      icon: "mdi-power",
-      name: "Log Out",
-      signal: ""
     }
   ];
   get appName() {
     return this.appModule.appName;
+  }
+  logOut() {
+    setToken("undefined");
+        setProfile({});
+    console.log(getToken())
+    this.$router.push("/")
   }
 }
 </script>

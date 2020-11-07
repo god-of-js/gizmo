@@ -63,15 +63,16 @@ export default class Login extends Vue {
       .then((response: Data) => {
         setProfile(response.data);
         setToken(response.data.jwt);
+        console.log(response.data)
         notify.success(response.data.message, "Success", "topRight");
-        this["user/setUserData"]({ value: response.data });
+        this["user/setUserData"](response.data);
         // this.getData(response.data);
         this.$router.push(`/dashboard`);
         this.loaders(false);
       })
       .catch((err: Response) => {
-        notify.error(err.response.data.message, "Error", "topRight");
         this.loaders(false);
+        notify.error(err.response.data.message, "Error", "topRight");
       });
   }
 }

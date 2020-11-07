@@ -25,11 +25,10 @@ let gottenUser: User;
 })
 export default class UserMod extends VuexModule {
   user = gottenUser ?? getUser() ?? {};
-  jwt = "";
   @Mutation
   public setUserData(data: any) {
-    gottenUser = data.value.data;
-    this.jwt = data.value.jwt;
+    console.log(data)
+    gottenUser = data;
   }
   @Action
   public async getUserData(data: User) {
