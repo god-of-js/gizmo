@@ -2,7 +2,7 @@
   <v-text-field
     outlined
     :label="label"
-    :type="type"
+    :type="type"  
     v-on="$listeners"
   ></v-text-field>
 </template>
