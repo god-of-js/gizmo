@@ -20,7 +20,7 @@
     "@types/chai-spies": "^1.0.2",
     "@types/js-cookie": "^2.2.6",
     "@types/vue": "^2.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chai-spies": "^1.0.0",
     "core-js": "^3.6.5",
     "coveralls": "^3.1.0",
