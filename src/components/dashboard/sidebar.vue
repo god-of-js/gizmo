@@ -36,20 +36,12 @@
         class="mt-4"
         @click="logOut"
       >
-          <div
-            :class="[
-              routeStyle
-            ]"
+        <div :class="[routeStyle]">
+          <v-icon :color="'white'" style="font-size: 1.2em;" class="mr-4  icon"
+            >mdi-power</v-icon
           >
-            <v-icon
-              :color="'white'
-              "
-              style="font-size: 1.2em;"
-              class="mr-4  icon"
-              >mdi-power</v-icon
-            >
-            <span class="font__x__sm">Log Out</span>
-          </div>
+          <span class="font__x__sm">Log Out</span>
+        </div>
       </li>
     </ul>
   </nav>
@@ -58,7 +50,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import App from "@/store/modules/app";
 import { getModule } from "vuex-module-decorators";
-import {setToken, setProfile,getToken} from "@/utils/cookies"
+import { setToken, setProfile, getToken } from "@/utils/cookies";
 @Component({
   name: "Sidebar",
   components: {}
@@ -91,9 +83,9 @@ export default class Sidebar extends Vue {
   }
   logOut() {
     setToken("undefined");
-        setProfile({});
-    console.log(getToken())
-    this.$router.push("/")
+    setProfile({});
+    console.log(getToken());
+    this.$router.push("/");
   }
 }
 </script>

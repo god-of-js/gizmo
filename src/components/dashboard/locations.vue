@@ -14,7 +14,7 @@ export default {
   props: {
     label: String,
     isOutlined: Boolean,
-    value: String,
+    value: String
   },
   components: { VueGoogleAutocomplete },
   mounted() {
@@ -25,8 +25,8 @@ export default {
   methods: {
     getAddressData: function(addressData, placeResultData, id) {
       this.$emit("placesChange", addressData);
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

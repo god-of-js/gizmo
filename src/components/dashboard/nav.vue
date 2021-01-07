@@ -13,15 +13,10 @@
     <div class="d-flex align-center">
       <router-link
         to="/add-property"
-          class="mr-12"
+        class="mr-12"
         v-if="$router.history.current.name === 'My Properties'"
       >
-        <cbutton
-          :text="'Add new property'"
-          :pl="''"
-          :pr="''"
-          :mt="''"
-        />
+        <cbutton :text="'Add new property'" :pl="''" :pr="''" :mt="''" />
       </router-link>
       <cavatar :initials="'HE'" :size="45" />
     </div>

@@ -6,9 +6,9 @@
     <section class="d-flex mt-n7 justify-center">
       <search />
     </section>
-    <v-row class="pa-5 pl-14 pr-14"> 
-      <v-col v-for="(property, index) in universalProperty" :key="index" md="3"> 
-        <property  :property="property"/>
+    <v-row class="pa-5 pl-14 pr-14">
+      <v-col v-for="(property, index) in universalProperty" :key="index" md="3">
+        <property :property="property" />
       </v-col>
     </v-row>
   </div>
@@ -23,8 +23,8 @@ import { getModule } from "vuex-module-decorators";
   name: "home",
   components: {
     search: () => import("@/components/home/search.vue"),
-    property: () => import("@/components/home/property.vue"),
-  },
+    property: () => import("@/components/home/property.vue")
+  }
 })
 export default class Home extends Vue {
   properties = getModule(PropertiesModule, this.$store);
@@ -35,7 +35,7 @@ export default class Home extends Vue {
     return this.$store.state.properties.universalProperty;
   }
   mounted() {
-      this.properties.getAllProperties();
+    this.properties.getAllProperties();
   }
 }
 </script>

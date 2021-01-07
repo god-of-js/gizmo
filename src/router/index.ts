@@ -19,8 +19,7 @@ const routes: RouteConfig[] = [
     component: () => import("../layouts/auth.vue")
   },
   { path: "/properties/view-property/*" },
-  { path: "/properties/edit-property/*" },
-  
+  { path: "/properties/edit-property/*" }
 ];
 
 const router = new VueRouter({

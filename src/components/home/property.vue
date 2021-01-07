@@ -23,7 +23,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { Property } from "@/utils/models";
 @Component({
-  name: "dashboard-card",
+  name: "dashboard-card"
 })
 export default class DashboardCard extends Vue {
   @Prop() property!: Property;

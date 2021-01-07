@@ -26,7 +26,7 @@
             <button
               :class="[
                 'green__btn',
-                ' pb-3 pt-3 mt-6  font__x__sm add__button active',
+                ' pb-3 pt-3 mt-6  font__x__sm add__button active'
               ]"
               style="width: 150px"
             >
@@ -62,8 +62,8 @@ import { getModule } from "vuex-module-decorators";
 @Component({
   name: "PropOwnerDetails",
   components: {
-    property: () => import("@/components/home/property.vue"),
-  },
+    property: () => import("@/components/home/property.vue")
+  }
 })
 export default class PropOwnerDetails extends Vue {
   properties = getModule(PropertiesModule, this.$store);

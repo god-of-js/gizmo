@@ -40,11 +40,11 @@ export default {
           id: this.$store.state.user.user._id
         })
         .then(response => {
-          this.$emit("done",response.data.data)
+          this.$emit("done", response.data.data);
           notify.success(response.data.message, "Success", "topRight");
         })
         .catch(err => {
-          this.$emit("done")
+          this.$emit("done");
           notify.error(err.response.data.message, "Error", "topRight");
         });
     }

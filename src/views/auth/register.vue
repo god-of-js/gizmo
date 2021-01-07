@@ -74,13 +74,13 @@ export default class Register extends Vue {
     Api()
       .post("/api/v1/user/register", this.body)
       .then((response: Data) => {
-        console.log(response)
+        console.log(response);
         this["user/setUserData"](response.data);
         notify.success(response.data.message, "Success", "topRight");
         this.$router.push("/dashboard");
       })
       .catch((err: Response) => {
-    this.loaders(false);
+        this.loaders(false);
         notify.error(err.response.data.message, "Error", "topRight");
       });
     this.loaders(false);

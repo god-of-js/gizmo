@@ -1,9 +1,4 @@
-import {
-  Module,
-  VuexModule,
-  getModule,
-  Action
-} from "vuex-module-decorators";
+import { Module, VuexModule, getModule, Action } from "vuex-module-decorators";
 import router from "../../router";
 import store from "../index";
 import { Api } from "@/api";

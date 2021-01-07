@@ -3,7 +3,13 @@
     <input type="file" name="" id="file" />
     <v-row class="d-flex align-start">
       <v-col md="3" cols="12" class="d-flex align-end justify-center">
-        <cavatar :initials="'HE'" :size="145" class=" mr-0" :image="user.avatar" :key="user.avatar"/>
+        <cavatar
+          :initials="'HE'"
+          :size="145"
+          class=" mr-0"
+          :image="user.avatar"
+          :key="user.avatar"
+        />
         <add-image @imageAdd="loader = !loader" @done="done" />
 
         <v-progress-circular
@@ -51,7 +57,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";  
+import { Component, Vue } from "vue-property-decorator";
 import { Mutation } from "vuex-class";
 import { getToken, setProfile } from "@/utils/cookies";
 import { notify } from "@/utils/alert";
@@ -71,8 +77,8 @@ export default class Properties extends Vue {
   get user() {
     return this.$store.state.user.user;
   }
-  mounted(){
-    console.log(this.$store.state.user.user)
+  mounted() {
+    console.log(this.$store.state.user.user);
   }
   delProperty(): void {
     const data = {
@@ -104,10 +110,10 @@ export default class Properties extends Vue {
   }
   public done(param: any): void {
     this.loader = false;
-    console.log(param)
-      console.log(param.name)
+    console.log(param);
+    console.log(param.name);
     if (param.name) {
-      setProfile(param)
+      setProfile(param);
       this["user/setUserData"](param);
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div  :class="[$route.meta.parent === 'Home'? 'mt-16 pt-6' : '', 'pa-4']">
+  <div :class="[$route.meta.parent === 'Home' ? 'mt-16 pt-6' : '', 'pa-4']">
     <section>
       <div class="font__purple pl-6 pb-3 font__bold font__xx__md">
         {{ $format(property.type ? property.type : " ") }} for sale
@@ -191,8 +191,8 @@ let id: string;
     viewImageBig: () => import("@/components/universal/imgview.vue"),
     viewImageNumber: () => import("@/components/universal/viewimgnumber.vue"),
     viewImageSmall: () => import("@/components/dashboard/imgview.vue"),
-    propertyspecs: () => import("@/components/dashboard/propertyspecs.vue"),
-  },
+    propertyspecs: () => import("@/components/dashboard/propertyspecs.vue")
+  }
 })
 export default class Properties extends Vue {
   properties = getModule(PropertiesModule, this.$store);
@@ -209,21 +209,24 @@ export default class Properties extends Vue {
   delProperty(): void {
     const data = {
       ownerId: this.$store.state.user.user._id,
-      propId: id,
+      propId: id
     };
     axios
-      .delete(`${process.env.VUE_APP_API_URL}/api/v1/property/delete-property`, {
-        data,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        this.$router.push("/my-properties")
+      .delete(
+        `${process.env.VUE_APP_API_URL}/api/v1/property/delete-property`,
+        {
+          data,
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      .then(response => {
+        this.$router.push("/my-properties");
         notify.success(response.data.message, "Success", "topRight");
         console.log(response);
       })
-      .catch((err) => {
+      .catch(err => {
         notify.error(err.response.data.message, "Error", "topRight");
         console.log(err.response);
       });

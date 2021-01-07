@@ -1,5 +1,5 @@
 import { RouteConfig } from "vue-router";
-import {getToken} from "@/utils/cookies"
+import { getToken } from "@/utils/cookies";
 import dashboard from "@/layouts/dashboardlayout.vue";
 const dashboardLayout: RouteConfig = {
   path: "dashboard-layout",
@@ -58,7 +58,7 @@ const dashboardLayout: RouteConfig = {
       }
     }
   ],
-  
+
   beforeEnter: (to, from, next) => {
     if (getToken() !== "undefined") {
       next();

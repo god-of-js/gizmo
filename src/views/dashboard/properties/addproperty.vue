@@ -205,7 +205,7 @@ export default class AddProperty extends Vue {
     deep: true
   })
   watchState(value: Property) {
-    console.log(this.$route.params.id)
+    console.log(this.$route.params.id);
     if (value.type && this.$route.params.id) {
       this.body.type = value.type;
       this.body.size = value.size;
@@ -226,10 +226,10 @@ export default class AddProperty extends Vue {
   }
   mounted() {
     id = this.$route.params.id;
-    console.log(this.$route.params.id)
+    console.log(this.$route.params.id);
     if (this.$route.params.id) {
       this.properties.getProperty(id);
-    } 
+    }
   }
   public setPlace(e: object): void {
     this.body.location = e; //getting the location from google places api

@@ -1,8 +1,8 @@
 <template>
-  <div class="search__cont justify-between d-flex pb-0   pa-3 box__shadow border__radius">
-    <v-row
-    class="pa-0 ma-0"
-    >
+  <div
+    class="search__cont justify-between d-flex pb-0   pa-3 box__shadow border__radius"
+  >
+    <v-row class="pa-0 ma-0">
       <v-col cols="12" md="5">
         <cinput :label="'Enter type of property'" class="mb-n3 ml-3 mr-3"
       /></v-col>
@@ -23,8 +23,8 @@ import { Component, Vue } from "vue-property-decorator";
 @Component({
   name: "Search",
   components: {
-    locations: () => import("@/components/dashboard/locations.vue"),
-  },
+    locations: () => import("@/components/dashboard/locations.vue")
+  }
 })
 export default class SearchComponent extends Vue {
   location = {};

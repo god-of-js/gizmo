@@ -32,7 +32,7 @@ const HomeLayout: RouteConfig = {
         parent: "Home",
         child: true
       }
-    },
+    }
   ]
 };
 export default HomeLayout;

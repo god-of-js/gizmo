@@ -27,7 +27,7 @@ export default class UserMod extends VuexModule {
   user = gottenUser ?? getUser() ?? {};
   @Mutation
   public setUserData(data: any) {
-    console.log(data)
+    console.log(data);
     gottenUser = data;
   }
   @Action
