@@ -57,14 +57,6 @@ const dashboardLayout: RouteConfig = {
         parent: "properties"
       }
     }
-  ],
-
-  beforeEnter: (to, from, next) => {
-    if (getToken() !== "undefined") {
-      next();
-    } else {
-      next("/authentication");
-    }
-  }
+  ]
 };
 export default dashboardLayout;
